@@ -13,7 +13,7 @@ const localStrategy = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 
 
-const User = require("./models/user");
+// const Student = require("./models/student");
 
 const mongoDB = "mongodb://localhost:27017/online-examination-system";
 mongoose
@@ -61,16 +61,7 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// const seedDb = async function () {
-//     const user = new User({
-//         email: "huy2@gmail.com",
-//         username: "huy1234",
-//     });
-//     const password = "huyhuy123";
-//     const newUser = await User.register(user,password) 
-    
-// }
-// seedDb();
+
 
 app.get("/", (req, res) => {
     res.json({
