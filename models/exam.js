@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const Student = require("./student")
+const Course = require("./course")
 const examSchema = new Schema({
-    course: Schema.Types.ObjectId,
+    course: {
+        type: Schema.Types.ObjectId,
+        ref: Course
+    },
     semester: Number,
     room: {
         type: String,

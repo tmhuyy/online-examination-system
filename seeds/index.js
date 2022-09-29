@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Student = require("../models/student");
-// const Exam = require("../models/exam");
+const Exam = require("../models/exam");
 const Course = require("../models/course");
 
 const studentDetail = require("./studentDatail");
@@ -16,29 +16,29 @@ mongoose
     .catch((err) => console.log(err));
 
 const seedDb = async function () {
-    // await Student.deleteMany();
-    // for (let i = 0; i <= 20; i++){
-    //     const username = studentDetail.username[i];
-    //     const password = studentDetail.password[i];
-    //     const email = studentDetail.email[i];
-    //     const phoneNumber = studentDetail.phoneNumber[i];
-    //     const student = new Student({
-    //         username,
-    //         password,
-    //         email,
-    //         phoneNumber
-    //     })
-    //     const newStudent = await Student.register(student, password);
-    // }
-    const students = await Student.find();
-    console.log(students);
+    await Student.deleteMany();
+    for (let i = 0; i <= 19; i++){
+        const username = studentDetail.username[i];
+        const password = studentDetail.password[i];
+        const email = studentDetail.email[i];
+        const phoneNumber = studentDetail.phoneNumber[i];
+        const student = new Student({
+            username,
+            password,
+            email,
+            phoneNumber
+        })
+        const newStudent = await Student.register(student, password);
+    }
+    // const students = await Student.find();
+    // console.log(students);
 };
 
 const seedCourse = async function () {
     // const students = await Student.find();
 
     await Course.deleteMany();
-    for (let i = 0; i <= 6; i++) {
+    for (let i = 0; i <= 5; i++) {
         // const randomNumber = Math.floor(Math.random() * students.length) // 0 -> 20
         // const studentStudiedCourse = []
         const name = examDetail.name[i];
@@ -55,6 +55,38 @@ const seedCourse = async function () {
     }
 
 };
+
+const seedExam = async function () {
+    // await Exam.deleteMany();
+    // for (let i = 0; i <= 5; i++) {
+    //     const random2 = Math.floor(Math.random() * 1);
+    //     const courses = await Course.find();
+    //     // console.log(typeof courses[i]._id )
+    //     const semester = examDetail.semester[random2];
+    //     const endTime = examDetail.endTime[i];
+    //     const startTime = examDetail.startTime[i];
+    //     const room = examDetail.rooms[i];
+    //     const course = courses[i]._id;
+    //     const students = courses[i].students
+    //     const exam = new Exam({
+    //         semester,
+    //         startTime,
+    //         endTime,
+    //         room,
+    //         course,
+    //         students
+    //     })
+    //     await exam.save();
+    // }
+    // const exams = await Exam.find();
+    // const exam = exams[0].startTime.getTime();
+    // const test = new Date("2022-10-18 08:30:00").getTime();
+    // console.log(exam);
+    // console.log(test);
+}
 // seedDb();
-seedCourse()
+// seedCourse()
+// const random2 = Math.floor(Math.random() * 1);
+seedExam();
+// console.log(random2);
 
