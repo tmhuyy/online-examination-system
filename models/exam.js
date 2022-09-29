@@ -7,8 +7,11 @@ const examSchema = new Schema({
     room: {
         type: String,
     },
-    date: {
+    startTime: {
         type: Date
+    },
+    endTime: {
+        type: Date,
     },
     students: [
         {
