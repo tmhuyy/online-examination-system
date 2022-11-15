@@ -11,7 +11,8 @@ const MongoStore = require("connect-mongo");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
-
+const engine = require("ejs-mate");
+const path = require("path")
 
 // const Student = require("./models/student");
 
@@ -27,6 +28,11 @@ mongoose
   .catch((err) => console.log(err));
 
 const app = express();
+
+app.engine("ejs", engine);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.use(mongoSanitize());
 
 app.use(express.json());
@@ -57,16 +63,14 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.use(new localStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 app.get("/", (req, res) => {
-    res.json({
-        data: "Hello"
-    })
-})
+  res.render("homePage");
+});
 
-app.listen("8080", () => {
+app.listen("5050", () => {
   console.log("SERVER IS RUNNING");
 });

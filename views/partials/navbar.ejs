@@ -1,0 +1,34 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">PROJECT</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarNav"
+    >
+      <div class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <!-- <a class="nav-link" href="/campgrounds">Campgrounds</a> -->
+        <!-- <a class="nav-link" href="/campgrounds/new">New Campground</a> -->
+      </div>
+      <div class="navbar-nav">
+        <% if (!user) { %>
+        <a class="nav-link" href="/login">Log In</a>
+        <!-- <a class="nav-link" href="/register">Register</a> -->
+        <% } else { %>
+        <a class="nav-link" href="/logout">Log Out</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
