@@ -71,6 +71,9 @@ app.get("/", (req, res) => {
   res.render("homePage");
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
 app.listen("5050", () => {
   console.log("SERVER IS RUNNING");
 });
