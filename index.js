@@ -16,6 +16,7 @@ const engine = require("ejs-mate");
 const path = require("path")
 
 // const Student = require("./models/student");
+const AppError = require("./utils/AppError");
 
 const mongoDB = "mongodb://localhost:27017/online-examination-system";
 mongoose
@@ -69,6 +70,13 @@ app.use(passport.session());
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  res.locals.user = req.user;
+  next();
+}); 
+
 app.get("/", (req, res) => {
   res.render("homePage");
 });
@@ -82,6 +90,12 @@ app.get("/login", (req, res) => {
 app.all("*", (req, res, next) => {
   next(new AppError("PAGE NOT FOUND", 404));
 }); 
+
+// TODO custom error hanlding middleware
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Something went wrong", name } = err;
+  res.render("error", { status, message, name });
+});
 
 app.listen("5050", () => {
   console.log("SERVER IS RUNNING");
