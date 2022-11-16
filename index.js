@@ -17,6 +17,10 @@ const path = require("path")
 
 // const Student = require("./models/student");
 const AppError = require("./utils/AppError");
+const Student = require("./models/student");
+
+const studentRoutes = require("./routes/studentRoutes");
+
 
 const mongoDB = "mongodb://localhost:27017/online-examination-system";
 mongoose
@@ -66,25 +70,23 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-// passport.use(new localStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(new localStrategy(Student.authenticate()));
+passport.serializeUser(Student.serializeUser());
+passport.deserializeUser(Student.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.user = req.user;
+  res.locals.student = req.user;
   next();
 }); 
+
+app.use("/", studentRoutes);
+
 
 app.get("/", (req, res) => {
   res.render("homePage");
 });
-
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
 
 // TODO ERROR ROUTES
 app.all("*", (req, res, next) => {

@@ -22,7 +22,11 @@
         <!-- <a class="nav-link" href="/campgrounds/new">New Campground</a> -->
       </div>
       <div class="navbar-nav">
-        <a class="nav-link" href="/login">Log In</a>
+        <% if (!student) { %>
+          <a class="nav-link" href="/login">Log In</a>
+          <% } else { %>
+          <a class="nav-link" href="/logout">Log Out</a>
+          <% } %>
       </div>
     </div>
   </div>

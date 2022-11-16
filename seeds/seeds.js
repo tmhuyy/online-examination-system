@@ -109,8 +109,8 @@ Course.insertMany(
 ).then(() => console.log("success")).catch((err) => console.log(err))
 
 // seedTeacher();
-// console.log(teacherDetail)
-seedDb();
+console.log(teacherDetail)
+// seedDb();
 // const random2 = Math.floor(Math.random() * 1);
 // seedExam();
 // console.log(random2);
