@@ -6,6 +6,7 @@ const Teacher = require("../models/teacher")
 const studentDetail = require("./studentDetail");
 const examDetail = require("./examDetail");
 const teacherDetail = require("./teacherDetail");
+const courseDetail = require("./courseDetail");
 
 const mongoDB = "mongodb://localhost:27017/online-examination-system";
 mongoose
@@ -16,24 +17,24 @@ mongoose
     .then(() => console.log("CONNECTION MONGODB"))
     .catch((err) => console.log(err));
 
-// const seedDb = async function () {
-//     await Student.deleteMany();
-//     for (let i = 0; i <= 19; i++) {
-//         const username = studentDetail.username[i];
-//         const password = studentDetail.password[i];
-//         const email = studentDetail.email[i];
-//         const phoneNumber = studentDetail.phoneNumber[i];
-//         const student = new Student({
-//             username,
-//             password,
-//             email,
-//             phoneNumber,
-//         });
-//         const newStudent = await Student.register(student, password);
-//     }
-//     // const students = await Student.find();
-//     // console.log(students);
-// };
+const seedDb = async function () {
+    await Student.deleteMany();
+    for (let i = 0; i <= 19; i++) {
+        const username = studentDetail.username[i];
+        const password = studentDetail.password[i];
+        const email = studentDetail.email[i];
+        const phoneNumber = studentDetail.phoneNumber[i];
+        const student = new Student({
+            username,
+            password,
+            email,
+            phoneNumber,
+        });
+        const newStudent = await Student.register(student, password);
+    }
+    // const students = await Student.find();
+    // console.log(students);
+};
 
 // const seedCourse = async function () {
 //     const students = await Student.find();
@@ -94,14 +95,22 @@ const seedTeacher = async function () {
             phoneNumber,
         });
         await teacher.save()
-
     }
-
 };
+
+Course.insertMany(
+    [{ name: "Calculus 2", teacher: "6374682ea1eb939fdfdf503a" },
+    { name: "Introdution To Computing", teacher: "6374682ea1eb939fdfdf503a" },
+    { name: "Calculus 3", teacher: "6374682fa1eb939fdfdf503f"},
+    { name: "Computer Network", teacher: "6374682fa1eb939fdfdf5041" },
+    { name: "Physic 1", teacher: "6374682fa1eb939fdfdf5043" },
+    { name: "Software Enginnering", teacher: "6374682fa1eb939fdfdf5045" },
+        { name: "Operating System", teacher: "6374682fa1eb939fdfdf5047" },]
+).then(() => console.log("success")).catch((err) => console.log(err))
+
 // seedTeacher();
 // console.log(teacherDetail)
-// seedDb();
-// seedCourse();
+seedDb();
 // const random2 = Math.floor(Math.random() * 1);
 // seedExam();
 // console.log(random2);

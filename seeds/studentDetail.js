@@ -7,7 +7,7 @@ const studentDetail = {
     password: [],
 };
 
-for (let i = 0; i <= 20; i++){
+for (let i = 0; i <= 9; i++){
     const email = faker.internet.email().toLowerCase();
     const username = faker.internet.userName().toLowerCase();
     const phoneNumber = "0" + faker.random.numeric(9, { bannedDigits: ['0'] });
@@ -18,6 +18,6 @@ for (let i = 0; i <= 20; i++){
     studentDetail.password.push(password)
 }
 
+console.log(studentDetail)
 // console.log(studentDetail)
-// console.log(studentDetail)
-// module.exports = studentDetail;
+module.exports = studentDetail;
