@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -38,6 +39,7 @@ app.use(mongoSanitize());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
 
 const store = MongoStore.create({
   mongoUrl: mongoDB,
@@ -74,6 +76,13 @@ app.get("/", (req, res) => {
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
+
+// TODO ERROR ROUTES
+app.all("*", (req, res, next) => {
+  next(new AppError("PAGE NOT FOUND", 404));
+}); 
+
 app.listen("5050", () => {
   console.log("SERVER IS RUNNING");
 });
