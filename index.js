@@ -21,6 +21,8 @@ const Student = require("./models/student");
 
 const studentRoutes = require("./routes/studentRoutes");
 
+// dung de render toi trang login khi search 
+const isLoggedIn = require("./utils/isLoggedIn");
 
 const mongoDB = "mongodb://localhost:27017/online-examination-system";
 mongoose
@@ -83,11 +85,11 @@ app.use((req, res, next) => {
 
 app.use("/", studentRoutes);
 
-app.get("/examschedule", (req, res) => {
+app.get("/examschedule", isLoggedIn, (req, res) => {
   res.render("exams/schedule")
 });
 
-app.get("/score", (req, res) => {
+app.get("/score", isLoggedIn, (req, res) => {
   res.render("exams/score")
 })
 
