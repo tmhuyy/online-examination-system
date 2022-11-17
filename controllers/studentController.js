@@ -5,8 +5,8 @@ module.exports.renderLoginForm = (req, res) => {
 };
 
 module.exports.login = (req, res) => {
-    req.flash("success", "Welcom back to SE Probject");
-    const redirectUrl = req.session.returnTo || "/dashboard";
+    req.flash("success", "Welcome back to Eduboard");
+    const redirectUrl = req.session.returnTo || "/";
     res.redirect(redirectUrl);
 };
 

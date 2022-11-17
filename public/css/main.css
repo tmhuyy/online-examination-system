@@ -15726,3 +15726,9 @@ table.table td {
   border-radius: 100%;
   background: white;
 }
+
+.flash {
+  margin-top: 100px;
+  margin-right: 40px;
+  margin-left: 40px
+}

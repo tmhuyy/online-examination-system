@@ -608,13 +608,15 @@
               <li>
                 <a data-barba href="#">Contact</a>
               </li>
+              <% if (student) { %>
               <li>
                 <a data-barba href="#">Exam Scheduke</a>
               </li>
               <li>
                 <a data-barba href="#">Score</a>
               </li>
-              
+              <% } %>
+
             </ul>
           </div>
 
@@ -673,17 +675,19 @@
           </div>
 
           <!-- Log In -->
+          <% if (!student) { %>
           <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
             <!-- <a href="login.html" class="button -underline text-white">Log in</a> -->
             <a href="/login" class="button -sm -white text-dark-1 ">Log in</a>
           </div>
+          <% } else { %>
           <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
             <!-- <a href="login.html" class="button -underline text-white">Log in</a> -->
-            <a href="signup.html" class="button -sm -white text-dark-1 ">Log out</a>
+            <a href="/logout" class="button -sm -white text-dark-1 ">Log out</a>
           </div>
+          <% } %>
         </div>
       </div>
-
     </div>
   </div>
 </header>
