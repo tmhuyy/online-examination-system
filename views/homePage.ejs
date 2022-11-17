@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SE</title>
+        <title>Eduboard</title>
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
@@ -11,15 +11,13 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="/styles/home.css" />
-        <iframe src="https://calendar.google.com/calendar/embed?src=tmhuyy.itiu%40gmail.com&ctz=Asia%2FHo_Chi_Minh" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     </head>
-
 
     <body class="d-flex text-center text-white bg-dark">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <header class="mb-auto">
                 <div>
-                    <h3 class="float-md-left mb-0">SE PROJECT</h3>
+                    <h3 class="float-md-left mb-0">Eduboard</h3>
                     <nav
                         class="nav nav-masthead justify-content-center float-md-right"
                     >
@@ -29,15 +27,17 @@
                         <% if(!student) { %> 
                             <a class="nav-link" href="/login">Login</a>
                         <% } else {%> 
+                            <a class="nav-link" aria-current="page" href="/examschedule">Exam schedule</a>
+                            <a class="nav-link" aria-current="page" href="/score">Score</a>
                             <a class="nav-link" href="/logout">Logout</a>
                         <% } %>
                     </nav>
                 </div>
             </header>
             <main class="px-3">
-                <h1>SE PROJECT</h1>
+                <h1>Eduboard</h1>
                 <p class="lead">
-                    Welcome to SE PROJECT! <br />
+                    Welcome to Eduboard! <br />
                     Jump right in and explore our many campgrounds. <br />
                     Feel free to share some of your own and comment on others!
                 </p>
