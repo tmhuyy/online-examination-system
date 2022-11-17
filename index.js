@@ -83,10 +83,15 @@ app.use((req, res, next) => {
 
 app.use("/", studentRoutes);
 
+app.get("/examschedule", (req, res) => {
+  res.render("exams/schedule")
+})
 
 app.get("/", (req, res) => {
   res.render("homePage");
 });
+
+
 
 // TODO ERROR ROUTES
 app.all("*", (req, res, next) => {
