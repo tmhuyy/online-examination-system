@@ -1,0 +1,25 @@
+.sectionTitle {
+  &__title {
+    font-size: 30px;
+    line-height: 34px;
+    font-weight: 700;
+    color: var(--color-dark-1);
+  }
+
+  &__text {
+    margin-top: 10px;
+    color: var(--color-light-1);
+  }
+
+  &.-light {
+    .sectionTitle {
+      &__title {
+        color: white;
+      }
+    
+      &__text {
+        color: white;
+      }
+    }
+  }
+}

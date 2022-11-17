@@ -1,0 +1,21 @@
+.sidebar.-dashboard {
+  .sidebar {
+    &__item {
+      display: flex;
+      align-items: center;
+      border-radius: 16px;
+      padding: 0 20px;
+      height: 55px;
+      
+      @include media-down(sm) {
+        border-radius: 0;
+        height: 45px;
+      }
+
+      &.-is-active {
+        background-color: var(--color-dark-1);
+        color: white !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,309 @@
+.accordion {
+  &__item {
+  }
+
+  &__icon {
+    position: relative;
+
+    .icon {
+      transition: all 0.2s ease-out;
+      
+      &:nth-child(1) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      &:nth-child(2) {
+        position: relative;
+        transform: rotate(-90deg);
+        opacity: 0;
+      }
+    }
+  }
+
+  &__item.is-active .accordion__icon {
+    > *:nth-child(1) {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+    
+    > *:nth-child(2) {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+  }
+
+  &__content__inner {
+  }
+  
+  &__button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.4s;
+
+    button {
+      color: rgb(69, 69, 69);
+    }
+
+    &:active {
+      color: rgb(69, 69, 69);
+    }
+  }
+}
+
+.accordion.-simple .accordion {
+  &__item {
+    padding: 0;
+  }
+
+  &__content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  &__content__inner {
+    padding-bottom: rem(20px);
+  }
+
+  &__button {
+    cursor: pointer;
+    color: var(--text-dark-1);
+    padding: rem(19px) 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+
+    button {
+      color: var(--text-dark-1);
+    }
+  }
+
+  &__icon {
+    position: relative;
+    margin-right: rem(15px);
+
+    .icon {
+      width: rem(24px);
+      height: rem(24px);
+      stroke-width: 2;
+      transition: all 0.2s ease-out;
+      
+      &:nth-child(1) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      &:nth-child(2) {
+        position: relative;
+        transform: rotate(-90deg);
+        opacity: 0;
+      }
+    }
+  }
+
+  &__item.is-active .accordion__icon {
+    > *:nth-child(1) {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+    
+    > *:nth-child(2) {
+      transform: none;
+      opacity: 1;
+    }
+  }
+}
+
+.accordion.-simple.-light {
+  .accordion__item + .accordion__item {
+    border-top: 1px solid rgba(#ffffff, 0.2);
+  }
+}
+
+
+.accordion.-block .accordion {
+  &__item {
+    box-shadow: 0px 1px 4px rgba(20, 3, 66, 0.07);
+    border-radius: 16px;
+    padding: 0;
+
+    + .accordion__item {
+      margin-top: 20px;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  &__content__inner {
+    padding: 0 85px 35px 82px;
+
+    @include media-down(sm) {
+      padding: 0 25px 35px 82px;
+    }
+  }
+  
+  &__button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    transition: all 0.4s $easeOutQuart;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-light-7);
+    border-radius: 100%;
+    margin-right: 22px;
+    transition: all 0.2s ease-out;
+
+    .icon {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      color: var(--color-purple-1);
+      transition: all 0.2s ease-out;
+      
+      &:nth-child(1) {
+        top: unset;
+        left: unset;
+      }
+
+      &:nth-child(2) {
+        transform: rotate(-90deg);
+        opacity: 0;
+      }
+    }
+  }
+
+  &__item.is-active {
+    .accordion__icon {
+      background-color: var(--color-purple-1);
+      
+      .icon {
+        color: white;
+      }
+
+      > *:nth-child(1) {
+        transform: rotate(90deg);
+        opacity: 0;
+      }
+      
+      > *:nth-child(2) {
+        transform: none;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.-dark-mode .accordion.-block-2 .accordion {
+  &__item {
+    border: 1px solid rgba(white, 0.1) !important;
+  }
+}
+
+.accordion.-block-2 .accordion {
+  &__item {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 0;
+    border: 1px solid #EDEDED;
+    
+    + .accordion__item {
+      margin-top: rem(20px);
+    }
+  }
+  
+  &__content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  &__content__inner {
+  }
+  
+  &__button {
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: all 0.4s $easeOutQuart;
+  }
+
+  &__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin-right: 14px;
+    transition: all 0.2s ease-out;
+
+    .icon {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+      transition: all 0.2s ease-out;
+      
+      &:nth-child(1) {
+      }
+
+      &:nth-child(2) {
+        transform: rotate(-90deg);
+        opacity: 0;
+      }
+    }
+  }
+
+  &__item.is-active {
+    .accordion__icon {
+      > *:nth-child(1) {
+        transform: rotate(90deg);
+        opacity: 0;
+      }
+      
+      > *:nth-child(2) {
+        transform: none;
+        opacity: 1;
+      }
+    }
+  }
+}

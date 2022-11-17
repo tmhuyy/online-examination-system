@@ -85,10 +85,18 @@ app.use("/", studentRoutes);
 
 app.get("/examschedule", (req, res) => {
   res.render("exams/schedule")
+});
+
+app.get("/score", (req, res) => {
+  res.render("exams/score")
+})
+
+app.get("/blogs", (req, res) => {
+  res.render("blogs/blog-list-3")
 })
 
 app.get("/", (req, res) => {
-  res.render("homePage");
+  res.render("index");
 });
 
 

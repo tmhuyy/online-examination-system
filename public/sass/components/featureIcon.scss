@@ -1,0 +1,30 @@
+.featureIcon.-type-1 {
+  display: flex;
+
+  .featureIcon {
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+
+      @include media-down(md) {
+        width: 60px;
+        height: 60px;
+      }
+
+      .icon {
+        font-size: 38px;
+        
+        @include media-down(md) {
+          font-size: 32px;
+        }
+      }
+    }
+
+    &__content {}
+  }
+}

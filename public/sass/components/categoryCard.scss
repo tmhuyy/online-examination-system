@@ -1,0 +1,156 @@
+.categoryCard.-type-1 {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+
+  .categoryCard {
+    &__image {}
+
+    &__content {
+      z-index: 5;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      &::before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #6440FB;
+        opacity: 0;
+        transition: all 0.3s $easeOutCubic
+      }
+    }
+
+    &__title {}
+
+    &__subtitle {}
+  }
+
+  &:hover {
+    .categoryCard__content::before {
+      opacity: 0.85;
+    }
+  }
+}
+
+.categoryCard.-type-2 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  .categoryCard {
+    &__image {}
+
+    &__content {}
+
+    &__title {
+      transition: color 0.3s $easeOutCubic;
+    }
+
+    &__text {}
+  }
+
+  &:hover {
+    .categoryCard__title {
+      color: var(--color-purple-1);
+    }
+  }
+}
+
+.categoryCard.-type-3 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #EDEDED;
+  border-radius: 8px;
+  transition: all 0.3s $easeOutCubic;
+
+  .categoryCard {
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      transition: color 0.3s $easeOutCubic;
+
+      .icon {
+        transition: color 0.3s $easeOutCubic;
+      }
+    }
+
+    &__content {}
+
+    &__title {
+      transition: color 0.3s $easeOutCubic;
+    }
+
+    &__text {}
+  }
+
+  &:hover {
+    box-shadow: 0px 6px 15px 0px #404F680D;
+
+    .categoryCard__icon {
+      background-color: var(--color-purple-1);
+
+      .icon {
+        color: white;
+      }
+    }
+    .categoryCard__title {
+      color: var(--color-purple-1);
+    }
+  }
+}
+
+.categoryCard.-type-4 {
+  .categoryCard {
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 240px;
+      border-radius: 100%;
+      border-radius: 8px;
+      transition: color 0.3s $easeOutCubic;
+
+      .icon {
+        font-size: 75px;
+        transition: color 0.3s $easeOutCubic;
+      }
+    }
+
+    &__content {}
+
+    &__title {
+      transition: color 0.3s $easeOutCubic;
+    }
+
+    &__text {}
+  }
+
+  &:hover {
+    .categoryCard__icon .icon {
+      color: var(--color-purple-1);
+    }
+    .categoryCard__title {
+      color: var(--color-purple-1);
+    }
+  }
+}

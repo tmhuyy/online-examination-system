@@ -1,0 +1,130 @@
+.testimonials.-type-1 {
+  .testimonials {
+    &__content {
+      border-radius: 8px;
+      background-color: white;
+      padding: 30px;
+      padding-bottom: 20px;
+    }
+  
+    &__title {
+      font-size: 18px;
+      line-height: 36px;
+      font-weight: 400;
+      color: #6440FB;
+    }
+    
+    &__text {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 30px;
+      font-weight: 400;
+      color: var(--color-dark-1);
+    }
+  }
+
+  .testimonials-footer {
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid #EDEDED;
+
+    &__image {
+      margin-right: 20px;
+
+      img {
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    &__content {}
+
+    &__title {
+      font-size: 15px;
+      line-height: 17px;
+      font-weight: 500;
+    }
+
+    &__text {
+      margin-top: 5px;
+      font-size: 13px;
+      line-height: 15px;
+      font-weight: 400;
+      color: var(--color-light-1);
+    }
+  }
+}
+
+.counter {
+  text-align: center;
+
+  &__row {
+    padding-top: 180px;
+
+    @include media-down(md) {
+      padding-top: 80px;
+    }
+  }
+
+  &__number {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 40px;
+    color: #00FF84;
+  }
+
+  &__title {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 26px;
+    font-weight: 400;
+    color: white;
+  }
+}
+
+.testimonials.-type-2 {
+
+  .testimonials {
+    &__icon {}
+
+    &__text {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 36px;
+      margin-top: 30px;
+    }
+
+    &__author {
+      margin-top: 60px;
+    }
+  }
+}
+
+.testimonials.-type-3 {
+  display: flex;
+  align-items: flex-end;
+  border-radius: 8px;
+  padding: 60px;
+  padding-right: 50px;
+
+  .testimonials {
+    &__image {
+      flex-shrink: 0;
+
+      img {
+        border-radius: 100%;
+        width: 170px;
+        height: auto;
+      }
+    }
+
+    &__text {
+    }
+
+    &__author {
+    }
+  }
+}

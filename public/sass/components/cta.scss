@@ -1,0 +1,27 @@
+.cta.-type-1 {
+  z-index: 0;
+  position: relative;
+  padding-top: 208px;
+  padding-bottom: 168px;
+
+  @include media-down(md) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include media-down(sm) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .cta {
+    &__bg {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.header.-dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
+
+  .header {
+    &__container {
+
+    }
+  }
+}
+
+.footer.-dashboard {
+  max-width: 1290px;
+  margin: 0 auto;
+
+  @include media-down(sm) {
+    padding: 0 20px;
+  }
+}

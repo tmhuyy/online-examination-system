@@ -1,0 +1,39 @@
+.app-image {
+  img {}
+}
+
+.app-content {
+  padding-left: 40px;
+  
+  @include media-down(md) {
+    padding-left: 0;
+  }
+
+  &__title {
+    font-size: 45px;
+    line-height: 52px;
+    font-weight: 700;
+    color: var(--color-dark-1);
+
+    span {
+      color: #6440FB;
+    }
+  }
+
+  &__text {
+    margin-top: 20px;
+    color: var(--color-dark-1);
+    font-size: 15px;
+    line-height: 26px;
+    font-weight: 400;
+  }
+
+  &__buttons {
+    margin-top: 30px;
+    display: flex;
+
+    > * + * {
+      margin-left: 20px;
+    }
+  }
+}

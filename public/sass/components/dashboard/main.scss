@@ -1,0 +1,73 @@
+.dashboard {
+  display: flex;
+  padding-right: 30px;
+  padding-left: 30px;
+
+  @include media-down(lg) {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  @include media-down(sm) {
+    padding: 0;
+  }
+
+  &__main {
+    margin-top: 90px;
+    width: 100%;
+    padding-left: 300px;
+    
+    @include media-down(xl) {
+      padding-left: 250px;
+    }
+
+    @include media-down(lg) {
+      padding-left: 0;
+      margin-top: 30px;
+    }
+  }
+  
+  &__content {
+    width: 100%;
+    padding: 60px;
+    border-radius: 16px;
+    
+    @include media-down(md) {
+      padding: 30px;
+    }
+    
+    @include media-down(sm) {
+      border-radius: 0;
+      padding: 20px;
+    }
+  }
+  
+  &__sidebar {
+    overflow-y: scroll;
+    position: fixed;
+    left: 0;
+    background-color: white;
+    flex-shrink: 0;
+    width: 300px;
+    height: calc(100% - 90px);
+    padding: 30px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    margin-top: 90px;
+
+    @include media-down(xl) {
+      width: 250px;
+    }
+    
+    @include media-down(lg) {
+      position: relative;
+      width: 100%;
+      padding: 20px;
+      margin-top: 80px;
+    }
+
+    &.-base {
+      padding-top: 0;
+    }
+  }
+}

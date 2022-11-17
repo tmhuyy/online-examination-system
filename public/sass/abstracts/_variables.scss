@@ -1,0 +1,129 @@
+$font-faces: (
+  "GT-Walsheim-Pro-Thin.woff2": 100,
+  "GT-Walsheim-Pro-Ultra-Light.woff2": 200,
+  "GT-Walsheim-Pro-Light.woff2": 300,
+  "GT-Walsheim-Pro-Regular.woff2": 400,
+  "GT-Walsheim-Pro-Medium.woff2": 500,
+  "GT-Walsheim-Pro-Semi-Bold.woff2": 600,
+  "GT-Walsheim-Pro-Bold.woff2": 700,
+  "GT-Walsheim-Pro-Black.woff2": 800,
+);
+
+@each $name, $weight in $font-faces {
+  @font-face {
+    font-family: 'GT Walsheim Pro';
+    font-weight: #{$weight};
+    src: url('../fonts/font/#{$name}') format('woff2');
+  }
+}
+
+$breakpoints: (
+  xs: 480px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$breakpoints-loop: (
+  xl: 1200px,
+  lg: 992px,
+  md: 768px,
+  sm: 576px,
+  xs: 480px,
+);
+
+$font-size: 15px;
+$text-sizes: 6, 9, 11, 13, 14, 15, 16, 17, 18, 20, 24, 30, 35, 40, 45, 50, 55, 60, 64;
+
+:root {
+  --font-primary: "GT Walsheim Pro", sans-serif;
+  @each $size in $text-sizes {
+    --text-#{$size}: #{$size}px;
+  }
+}
+
+$colors: (
+  "white": "#FFFFFF",
+  "black": "#000000",
+
+  "dark-1": "#140342",
+  "dark-2": "#1A064F",
+  "dark-3": "#6A7A99",
+  "dark-4": "#242239",
+  "dark-5": "#282664",
+  "dark-6": "#311F61",
+  "dark-7": "#EAE9EF",
+  "dark-8": "#202124",
+
+  "light-1": "#4F547B",
+  "light-2": "#E4E7EA",
+  "light-3": "#EEF2F6",
+  "light-4": "#F7F8FB",
+  "light-5": "#EDEDED",
+  "light-6": "#F5F7FE",
+  "light-7": "#E5F0FD",
+  "light-8": "#DDDDDD",
+  "light-9": "#EEF2F6",
+  "light-10": "#F4F3F6",
+  "light-11": "#EBEAFE",
+  "light-12": "#CCE0F8",
+
+  "purple-1": "#6440FB",
+  "purple-2": "#E3EDFD",
+  "purple-3": "#F4F1FE",
+  "purple-4": "#7545F0",
+  "purple-5": "#EAE3FD",
+
+  "green-1": "#00FF84",
+  "green-2": "#DEF5F0",
+  "green-3": "#EEF8F5",
+  "green-4": "#04D697",
+  "green-5": "#34A853",
+  "green-6": "#DFF1DD",
+  "green-7": "#D9FFED",
+
+  "orange-1": "#E8543E",
+  "orange-2": "#F7E9E7",
+  "orange-3": "#FDF2EB",
+  "orange-4": "#E97D38",
+  "orange-5": "#FDEEEC",
+  "orange-6": "#E78E34",
+  "orange-7": "#FBEEE1",
+
+  "red-1": "#F01E00",
+  "red-2": "#FCE5E2",
+  "red-3": "#D93025",
+
+  "beige-1": "#FEFBF4",
+
+  "blue-1": "#65C2F9",
+  "blue-2": "#EFF9FE",
+  "blue-3": "#1967D2",
+  "blue-4": "#508EF0",
+  "blue-5": "#445B95",
+  "blue-6": "#E5EEFD",
+  "blue-7": "#E3E6EF",
+  
+  "yellow-1": "#E59819",
+  "yellow-2": "#FDF8EB",
+  "yellow-3": "#ECB53E",
+  "yellow-4": "#F9AB00",
+  "yellow-5": "#FCEDCD",
+
+  "info-1": "#CDE9F6",
+  "info-2": "#4780AA",
+  "warning-1": "#F7F3D7",
+  "warning-2": "#927238",
+  "error-1": "#ECC8C5",
+  "error-2": "#AB3331",
+  "success-1": "#DEF2D7",
+  "success-2": "#5B7052",
+);
+
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+}

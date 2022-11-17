@@ -1,0 +1,36 @@
+.stepCard.-type-1 {
+  border-radius: 8px;
+  
+  .stepCard {
+    &__content {
+      border: 1px solid rgba(#FFFFFF, 0.25);
+      border-radius: 8px;
+      padding: 60px;
+      padding-bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    &__icon {
+      img {}
+    }
+
+    &__title {
+      margin-top: 37px;
+      font-size: 24px;
+      line-height: 27px;
+      font-weight: 700;
+      color: white;
+    }
+
+    &__text {
+      margin-top: 17px;
+      font-size: 15px;
+      line-height: 26px;
+      font-weight: 400;
+      color: rgba(white, 0.7);
+    }
+  }
+}

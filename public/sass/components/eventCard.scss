@@ -1,0 +1,167 @@
+.eventCard.-type-1 {
+  .eventCard {
+    &__img {
+      img {
+        border-radius: 8px;
+        width: 100%;
+      }
+    }
+
+    &__bg {
+      z-index: 5;
+      position: relative;
+      width: calc(100% - 20px);
+      box-shadow: 0px 6px 15px 0px #404F680D;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 0 auto;
+      margin-top: -45px;
+      transition: all 0.4s $easeOutCubic;
+    }
+
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__inner {}
+
+    &__title {}
+
+    &__button {}
+  }
+
+  &:hover {
+    .eventCard__bg {
+      box-shadow: 0px 40px 30px 0px #19192E0A;
+    }
+  }
+}
+
+.eventCard.-type-2 {
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: 0px 25px 70px 0px #01213A12;
+  border: 1px solid #EDEDED;
+
+  .eventCard {
+    &__img {
+      img {
+        width: 100%;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__title {}
+
+    &__button {}
+  }
+}
+
+.eventCard.-type-3 {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+  padding: 40px;
+  padding-bottom: 28px;
+  padding-right: 50px;
+  transition: all 0.4s $easeOutCubic;
+
+  .eventCard {
+    &__date {
+      display: flex;
+      align-items: center;
+      transition: all 0.4s $easeOutCubic;
+    }
+
+    &__title {
+      transition: all 0.4s $easeOutCubic;
+    }
+
+    &__button {
+      position: absolute;
+      bottom: 28px;
+      left: 40px;
+      transition: all 0.4s $easeOutCubic 0.05s;
+      transform: translateY(50px);
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-dark-5);
+
+    .eventCard {
+      &__date span {
+        color: white !important;
+      }
+  
+      &__title {
+        color: white !important;
+        transform: translateY(-67px);
+      }
+  
+      &__button {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.eventCard.-type-4 {
+  display: flex;
+  align-items: center;
+
+  .eventCard {
+    &__category {
+    }
+
+    &__date {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 8px;
+      width: 100px;
+      height: 100px;
+      transition: all 0.4s $easeOutCubic;
+      
+      span {
+        transition: all 0.4s $easeOutCubic;
+      }
+    }
+
+    &__title {}
+  }
+
+  &:hover {
+    .eventCard {
+      &__date {
+        background-color: var(--color-purple-1) !important;
+
+        span {
+          color: white !important;
+        }
+      }
+    }
+  }
+}
+
+.eventCard.-type-5 {
+
+  .eventCard {
+    
+  }
+}
