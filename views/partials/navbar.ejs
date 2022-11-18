@@ -684,12 +684,9 @@
           <!-- Log In -->
           <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
             <% if (!student) { %>
-            <!-- <a href="login.html" class="button -underline text-white">Log in</a> -->
             <a href="/login" class="button -sm -white text-dark-1 ">Log in</a>
             <% } else { %>
-            <!-- <a href="login.html" class="button -underline text-white">Log in</a> -->
             <p class="text-red fw-600 mr-30 text-20">Hello <%= student.username %></p>
-
             <a href="/logout" class="button -sm -white text-dark-1 ">Log out</a>
             <% } %>
 

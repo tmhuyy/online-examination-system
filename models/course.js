@@ -4,6 +4,9 @@ const Student = require("./student")
 const Teacher = require("./teacher")
 
 const courseSchema = new Schema({
+    subjectCode: {
+        type: String
+    },
     name: {
         type: String,
     },
