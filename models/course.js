@@ -4,7 +4,7 @@ const Student = require("./student")
 const Teacher = require("./teacher")
 
 const courseSchema = new Schema({
-    subjectCode: {
+    _id: {
         type: String
     },
     name: {
@@ -16,10 +16,6 @@ const courseSchema = new Schema({
             ref: Student,
         },
     ],
-    teacher: {
-        type: Schema.Types.ObjectId,
-        ref: Teacher
-    }
 });
 
 const Course = mongoose.model("Course", courseSchema);

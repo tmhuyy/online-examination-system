@@ -19,7 +19,7 @@ mongoose
 
 const seedDb = async function () {
     await Student.deleteMany();
-    for (let i = 0; i <= 19; i++) {
+    for (let i = 0; i <= 4; i++) {
         const username = studentDetail.username[i];
         const password = studentDetail.password[i];
         const email = studentDetail.email[i];
@@ -35,6 +35,25 @@ const seedDb = async function () {
     // const students = await Student.find();
     // console.log(students);
 };
+
+const seedStudent = async function () {
+    await Student.deleteMany();
+    for (let i = 0; i <= studentDetail.length - 1; i++) {
+        const username = studentDetail[i].username;
+        const password = studentDetail[i].password;
+        const email = studentDetail[i].email;
+        const phoneNumber = studentDetail[i].phoneNumber;
+        const courses = studentDetail[i].courses;
+        const student = new Student({
+            username,
+            password,
+            email,
+            phoneNumber,
+            courses
+        });
+        const newStudent = await Student.register(student, password);
+    }
+}
 
 // const seedCourse = async function () {
 //     const students = await Student.find();
@@ -98,18 +117,19 @@ const seedTeacher = async function () {
     }
 };
 
-Course.insertMany(
-    [{ name: "Calculus 2", teacher: "6374682ea1eb939fdfdf503a" },
-    { name: "Introdution To Computing", teacher: "6374682ea1eb939fdfdf503a" },
-    { name: "Calculus 3", teacher: "6374682fa1eb939fdfdf503f"},
-    { name: "Computer Network", teacher: "6374682fa1eb939fdfdf5041" },
-    { name: "Physic 1", teacher: "6374682fa1eb939fdfdf5043" },
-    { name: "Software Enginnering", teacher: "6374682fa1eb939fdfdf5045" },
-        { name: "Operating System", teacher: "6374682fa1eb939fdfdf5047" },]
-).then(() => console.log("success")).catch((err) => console.log(err))
+// Course.insertMany(
+//     [{ name: "Calculus 2", _id: "MAIU02" },
+//     { name: "Introdution To Computing", _id: "ITIT01"},
+//     { name: "Calculus 3", _id: "MAIU02", },
+//     { name: "Computer Network", _id: "ITIT02",  },
+//     { name: "Physic 1", _id: "PHIU01", },
+//     { name: "Software Enginnering", _id: "ITIT03", },
+//     { name: "Operating System", _id: "ITIT04", },]
+// ).then(() => console.log("success")).catch((err) => console.log(err))
+// Student.deleteMany()'
 
-// seedTeacher();
-console.log(teacherDetail)
+
+seedStudent();
 // seedDb();
 // const random2 = Math.floor(Math.random() * 1);
 // seedExam();
