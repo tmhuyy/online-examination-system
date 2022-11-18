@@ -26,19 +26,15 @@ const examDetail = {
     new Date("2022-10-16 15:00:00"),
     new Date("2022-10-17 13:30:00"),
   ], 
-  semester: [1, 2]
 };
 
-for (let i = 0; i <= 6; i++) {
-    // const email = faker.internet.email().toLowerCase();
-    // const username = faker.internet.userName().toLowerCase();
-    // const phoneNumber = "0" + faker.random.numeric(9, { bannedDigits: ['0'] });
-    // const password = faker.internet.password().toLowerCase();
-    // studentDetail.email.push(email)
-    // studentDetail.username.push(username)
-    // studentDetail.phoneNumber.push(phoneNumber)
-    // studentDetail.password.push(password)
-}
-
 // console.log(studentDetail)
-module.exports = examDetail;
+module.exports = [
+  {
+    course: "",
+    room: "",
+    startTime: "",
+    endTime: "",
+
+  }
+];

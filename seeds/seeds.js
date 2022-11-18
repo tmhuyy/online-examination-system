@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Student = require("../models/student");
 const Exam = require("../models/exam");
 const Course = require("../models/course");
-const Teacher = require("../models/teacher")
+const Teacher = require("../models/teacher");
 const studentDetail = require("./studentDetail");
 const examDetail = require("./examDetail");
 const teacherDetail = require("./teacherDetail");
@@ -17,25 +17,6 @@ mongoose
     .then(() => console.log("CONNECTION MONGODB"))
     .catch((err) => console.log(err));
 
-const seedDb = async function () {
-    await Student.deleteMany();
-    for (let i = 0; i <= 4; i++) {
-        const username = studentDetail.username[i];
-        const password = studentDetail.password[i];
-        const email = studentDetail.email[i];
-        const phoneNumber = studentDetail.phoneNumber[i];
-        const student = new Student({
-            username,
-            password,
-            email,
-            phoneNumber,
-        });
-        const newStudent = await Student.register(student, password);
-    }
-    // const students = await Student.find();
-    // console.log(students);
-};
-
 const seedStudent = async function () {
     await Student.deleteMany();
     for (let i = 0; i <= studentDetail.length - 1; i++) {
@@ -49,30 +30,39 @@ const seedStudent = async function () {
             password,
             email,
             phoneNumber,
-            courses
+            courses,
         });
         const newStudent = await Student.register(student, password);
     }
-}
+};
 
-// const seedCourse = async function () {
-//     const students = await Student.find();
+const seedCourse = async function () {
+    const studentList = await Student.find();
+    await Course.deleteMany();
+    
+    for (let i = 0; i <= courseDetail.length - 1; i++) {
+        let students = [];
+        const _id = courseDetail[i]._id;
+        const name = courseDetail[i].name;
 
-//     await Course.deleteMany();
-//     const studentStudiedCourse = [];
-//     for (let i = 0; i <= 4; i++) {
-//         studentStudiedCourse.push(students[i]._id);
-//     }
+        for (let j = 0; j <= (studentList.length - 1); j++) {
+            
+            if (studentList[j].courses.includes(_id)) {
+                console.log("hello")
+                students.push(studentList[j]._id);
+            } else {
+                console.log("hi")
+            }
+        }
 
-//     for (let i = 0; i <= 5; i++) {
-//         const name = examDetail.name[i];
-//         const course = new Course({
-//             name,
-//             students: studentStudiedCourse,
-//         });
-//         await course.save();
-//     }
-// };
+        const course = new Course({
+            name,
+            _id,
+            students,
+        });
+        await course.save();
+    }
+};
 
 // const seedExam = async function () {
 //     await Exam.deleteMany();
@@ -113,7 +103,7 @@ const seedTeacher = async function () {
             email,
             phoneNumber,
         });
-        await teacher.save()
+        await teacher.save();
     }
 };
 
@@ -128,8 +118,9 @@ const seedTeacher = async function () {
 // ).then(() => console.log("success")).catch((err) => console.log(err))
 // Student.deleteMany()'
 
+seedCourse();
 
-seedStudent();
+// seedStudent();
 // seedDb();
 // const random2 = Math.floor(Math.random() * 1);
 // seedExam();

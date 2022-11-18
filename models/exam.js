@@ -4,7 +4,7 @@ const Student = require("./student")
 const Course = require("./course")
 const examSchema = new Schema({
     course: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: Course
     },
     semester: Number,
