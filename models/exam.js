@@ -21,7 +21,6 @@ const examSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: Student,
-
         }
     ],
 });

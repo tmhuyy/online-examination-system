@@ -8,7 +8,7 @@
         <div class="header-left">
           <!-- logo -->
           <div class="header__logo ">
-            <a data-barba href="/" class="text-30 text-white">
+            <a data-barba href="/" class="text-35 fw-600 text-white">
               Eduboard
             </a>
 
@@ -22,14 +22,18 @@
         </div>
       </div>
 
-
+      <!-- mobile menu -->
       <div class="header-menu js-mobile-menu-toggle ">
         <div class="header-menu__content">
           <div class="mobile-bg js-mobile-bg"></div>
 
           <div class="d-none xl:d-flex items-center px-20 py-20 border-bottom-light">
-            <a href="login.html" class="text-dark-1">Log in</a>
-            <a href="signup.html" class="text-dark-1 ml-30">Sign Up</a>
+            <% if (!student) { %>
+            <a href="/login" class="text-dark-1">Log in</a>
+            <% } else { %>
+            <a href="/logout" class="text-dark-1">Log out</a>
+            <% } %>
+
           </div>
 
           <div class="menu js-navList">
@@ -481,7 +485,7 @@
                 </ul>
               </li> -->
               <!-- link BLOG -->
-              <li class="menu-item-has-children">
+              <!-- <li class="menu-item-has-children">
                 <a data-barba href="#">Blog <i class="icon-chevron-right text-13 ml-10"></i></a>
                 <ul class="subnav">
                   <li class="menu__backButton js-nav-list-back">
@@ -495,7 +499,7 @@
                   <li><a href="/blogs/blog-single.html">Blog Single</a></li>
 
                 </ul>
-              </li>
+              </li> -->
               <!-- link Pages -->
               <!-- <li class="menu-item-has-children">
                 <a data-barba href="#">
@@ -606,14 +610,17 @@
               </li> -->
             <!-- link contact -->
               <li>
-                <a data-barba href="#">Contact</a>
+                <a data-barba href="/" class="text-20">Home</a>
               </li>
+              <!-- <li>
+                <a data-barba href="#">Contact</a>
+              </li> -->
               <% if (student) { %>
               <li>
-                <a data-barba href="/examschedule">Exam Scheduke</a>
+                <a data-barba href="/examschedule" class="text-20">Exam Scheduke</a>
               </li>
               <li>
-                <a data-barba href="/score">Score</a>
+                <a data-barba href="/score" class="text-20">Score</a>
               </li>
               <% } %>
 
