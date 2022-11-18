@@ -120,5 +120,5 @@ const seedTeacher = async function () {
 // seedStudent();
 // seedDb();
 // const random2 = Math.floor(Math.random() * 1);
-seedExam();
+// seedExam();
 // console.log(random2);

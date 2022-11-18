@@ -20,6 +20,8 @@ const AppError = require("./utils/AppError");
 const Student = require("./models/student");
 
 const studentRoutes = require("./routes/studentRoutes");
+const examRoutes = require("./routes/examRoutes");
+
 
 // dung de render toi trang login khi search 
 const isLoggedIn = require("./utils/isLoggedIn");
@@ -84,10 +86,11 @@ app.use((req, res, next) => {
 }); 
 
 app.use("/", studentRoutes);
+app.use("/", examRoutes);
 
-app.get("/examschedule", isLoggedIn, (req, res) => {
-  res.render("exams/schedule")
-});
+// app.get("/examschedule", isLoggedIn, (req, res) => {
+//   res.render("exams/schedule")
+// });
 
 app.get("/score", isLoggedIn, (req, res) => {
   res.render("exams/score")

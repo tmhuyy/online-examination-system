@@ -14,15 +14,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>ITIT01</td>
-            <td>SE</td>
-            <td>12</td>
-            <td>25/12/2022</td>
-            <td>8:00</td>
-            <td>120</td>
-            <td>A1.602</td>
-        </tr>
+        <% for( let i = 0; i <= (examsOfStudent.length - 1); i++ ) { %>
+            <tr>
+                <th scope="row"><%= i + 1  %> </th>
+                <td><%= examsOfStudent[i].course  %></td>
+                <td><%= examsOfStudent[i].course  %></td>
+                <td><%= examsOfStudent[i].students.length  %></td>
+                <td><%= examsOfStudent[i].startTime.toLocaleDateString()  %></td>
+                <td><%= examsOfStudent[i].startTime.toLocaleTimeString()  %></td>
+                <td><%= (examsOfStudent[i].endTime - examsOfStudent[i].startTime) /60000  %> minutes</td>
+                <td><%= examsOfStudent[i].room  %></td>
+            </tr>
+        <% } %>>
+        
     </tbody>
 </table>
