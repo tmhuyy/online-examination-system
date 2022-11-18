@@ -64,34 +64,31 @@ const seedCourse = async function () {
     }
 };
 
-// const seedExam = async function () {
-//     await Exam.deleteMany();
-//     for (let i = 0; i <= 5; i++) {
-//         const random2 = Math.round(Math.random());
-//         const courses = await Course.find();
-//         // console.log(typeof courses[i]._id )
-//         const semester = examDetail.semester[random2];
-//         const endTime = examDetail.endTime[i];
-//         const startTime = examDetail.startTime[i];
-//         const room = examDetail.rooms[i];
-//         const course = courses[i]._id;
-//         const students = courses[i].students;
-//         const exam = new Exam({
-//             semester,
-//             startTime,
-//             endTime,
-//             room,
-//             course,
-//             students,
-//         });
-//         await exam.save();
-//     }
-//     // const exams = await Exam.find();
-//     // const exam = exams[0].startTime.getTime();
-//     // const test = new Date("2022-10-18 08:30:00").getTime();
-//     // console.log(exam);
-//     // console.log(test);
-// };
+const seedExam = async function () {
+    const courseList = await Course.find();
+    await Exam.deleteMany();
+    for (let i = 0; i <= examDetail.length - 1; i++) {
+        const endTime = examDetail[i].endTime;
+        const startTime = examDetail[i].startTime;
+        const room = examDetail[i].room;
+        const course = examDetail[i].course;
+        const students = courseList.filter((e) => e._id === course)[0].students;
+
+        const exam = new Exam({
+            startTime,
+            endTime,
+            room,
+            course,
+            students,
+        });
+        await exam.save();
+    }
+    // const exams = await Exam.find();
+    // const exam = exams[0].startTime.getTime();
+    // const test = new Date("2022-10-18 08:30:00").getTime();
+    // console.log(exam);
+    // console.log(test);
+};
 const seedTeacher = async function () {
     await Teacher.deleteMany();
     for (let i = 0; i <= 5; i++) {
@@ -118,10 +115,10 @@ const seedTeacher = async function () {
 // ).then(() => console.log("success")).catch((err) => console.log(err))
 // Student.deleteMany()'
 
-seedCourse();
+// seedCourse();
 
 // seedStudent();
 // seedDb();
 // const random2 = Math.floor(Math.random() * 1);
-// seedExam();
+seedExam();
 // console.log(random2);
