@@ -92,12 +92,16 @@ app.use("/", examRoutes);
 //   res.render("exams/schedule")
 // });
 
-app.get("/score", isLoggedIn, (req, res) => {
-  res.render("exams/score")
-})
+// app.get("/score", isLoggedIn, (req, res) => {
+//   res.render("exams/score")
+// })
 
 app.get("/blogs", (req, res) => {
   res.render("blogs/blog-list-3")
+});
+
+app.get("/admin", (req, res) => {
+  res.render("admin/index")
 })
 
 app.get("/", (req, res) => {

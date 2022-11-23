@@ -19,5 +19,5 @@ const examController = require("../controllers/examController");
 //     );
 
 router.get("/examschedule", examController.renderExamSchedule);
-
+router.get("/score", examController.renderExamScore)
 module.exports = router;

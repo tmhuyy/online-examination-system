@@ -10,6 +10,10 @@ const courseSchema = new Schema({
     name: {
         type: String,
     },
+    credit: {
+        type: Number,
+        min: 1
+    },
     students: [
         {
             type: Schema.Types.ObjectId,

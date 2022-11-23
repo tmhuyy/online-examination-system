@@ -10,13 +10,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>ITIT01</td>
-            <td>SE</td>
-            <td>04</td>
-            <td>99</td>
-        </tr>
+        <% for( let index = 0; index < recordOfStudent.length; index++ ) { %>
+            <tr>
+                <th scope="row"><%= index + 1%></th>
+                <td><%= recordOfStudent[index].courseID._id%></td>
+                <td><%= recordOfStudent[index].courseID.name%></td>
+                <td><%= recordOfStudent[index].courseID.credit%></td>
+                <td><%= recordOfStudent[index].score%></td>
+            </tr>
+        <% } %>
+        
         
     </tbody>
 </table>

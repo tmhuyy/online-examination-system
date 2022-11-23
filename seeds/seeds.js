@@ -3,10 +3,14 @@ const Student = require("../models/student");
 const Exam = require("../models/exam");
 const Course = require("../models/course");
 const Teacher = require("../models/teacher");
+const Record = require("../models/record");
+const Admin = require("../models/admin");
+
 const studentDetail = require("./studentDetail");
 const examDetail = require("./examDetail");
 const teacherDetail = require("./teacherDetail");
 const courseDetail = require("./courseDetail");
+const recordDetail = require("./recordDetail");
 
 const mongoDB = "mongodb://localhost:27017/online-examination-system";
 mongoose
@@ -44,7 +48,7 @@ const seedCourse = async function () {
         let students = [];
         const _id = courseDetail[i]._id;
         const name = courseDetail[i].name;
-
+        const credit = courseDetail[i].credit;
         for (let j = 0; j <= (studentList.length - 1); j++) {
             
             if (studentList[j].courses.includes(_id)) {
@@ -58,6 +62,7 @@ const seedCourse = async function () {
         const course = new Course({
             name,
             _id,
+            credit,
             students,
         });
         await course.save();
@@ -73,13 +78,14 @@ const seedExam = async function () {
         const room = examDetail[i].room;
         const course = examDetail[i].course;
         const students = courseList.filter((e) => e._id === course)[0].students;
-
+        // const score = Math.floor(Math.random() * 101);
         const exam = new Exam({
             startTime,
             endTime,
             room,
             course,
-            students,
+            students, 
+            // score
         });
         await exam.save();
     }
@@ -104,6 +110,21 @@ const seedTeacher = async function () {
     }
 };
 
+const seedRecord = async function () {
+    await Record.deleteMany();
+    for (let i = 0; i <= recordDetail.length - 1; i++) {
+        const studentID = recordDetail[i].studentID;
+        const courseID = recordDetail[i].courseID;
+        const score = recordDetail[i].score;
+        const record = new Record({
+            studentID,
+            courseID,
+            score,
+        });
+        await record.save()
+        // console.log(recordDetail[i])
+    }
+};
 // Course.insertMany(
 //     [{ name: "Calculus 2", _id: "MAIU02" },
 //     { name: "Introdution To Computing", _id: "ITIT01"},
@@ -121,4 +142,6 @@ const seedTeacher = async function () {
 // seedDb();
 // const random2 = Math.floor(Math.random() * 1);
 // seedExam();
+// seedRecord();
+
 // console.log(random2);

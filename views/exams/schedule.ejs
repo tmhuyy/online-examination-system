@@ -17,8 +17,8 @@
         <% for( let i = 0; i <= (examsOfStudent.length - 1); i++ ) { %>
             <tr>
                 <th scope="row"><%= i + 1  %> </th>
-                <td><%= examsOfStudent[i].course  %></td>
-                <td><%= examsOfStudent[i].course  %></td>
+                <td><%= examsOfStudent[i].course._id  %></td>
+                <td><%= examsOfStudent[i].course.name  %></td>
                 <td><%= examsOfStudent[i].students.length  %></td>
                 <td><%= examsOfStudent[i].startTime.toLocaleDateString()  %></td>
                 <td><%= examsOfStudent[i].startTime.toLocaleTimeString()  %></td>

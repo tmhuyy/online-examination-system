@@ -23,6 +23,7 @@ const examSchema = new Schema({
             ref: Student,
         }
     ],
+    
 });
 
 const Exam = mongoose.model("Exam", examSchema);
