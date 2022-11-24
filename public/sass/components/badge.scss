@@ -1,0 +1,19 @@
+.badge {
+  border-radius: 200px;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 0.15s $easeOutQuart;
+
+  &.-sm {
+    padding: 8px 17px;
+  }
+
+  &.-light-3 {
+    background-color: var(--color-light-3);
+    
+    &:hover {
+      background-color: var(--color-purple-1);
+      color: white !important;
+    }
+  }
+}

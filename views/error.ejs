@@ -1,0 +1,22 @@
+<% layout("layouts/boilerplate") %>
+<%- include ("../utils/symbol.svg") %>
+
+<div class="flash alert alert-danger" role="alert">
+  <h4 class="alert-heading">
+    <svg
+      class="bi flex-shrink-0 me-2"
+      width="20"
+      height="20"
+      role="img"
+      aria-label="Danger:"
+    >
+      <use xlink:href="#exclamation-triangle-fill" />
+    </svg>
+    <%= status %> <%= name  %>!!
+  </h4>
+  <p><%= message %></p>
+  <hr />
+  <p class="mb-0 text-muted">
+    Oh Boy!!! Something Went Wrong :(
+  </p>
+</div>

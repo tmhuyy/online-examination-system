@@ -1,0 +1,186 @@
+.coursesCard.-type-1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s $easeOutCubic;
+
+  .coursesCard {
+    &__image {
+      overflow: hidden;
+      
+      &_overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-dark-1);
+        opacity: 0;
+        transition: all 0.3s $easeOutCubic;
+      }
+
+      img {
+        z-index: 1;
+        transition: all 0.3s $easeOutCubic;
+      }
+    }
+  }
+
+  .coursesCard-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #EDEDED;
+
+    &__author {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+      }
+
+      div {
+        margin-left: 10px;
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 400;
+        color: var(--color-light-1);
+      }
+    }
+
+    &__price {
+      display: flex;
+      align-items: center;
+
+      > div:nth-child(1) {
+        font-size: 15px;
+        line-height: 17px;
+        font-weight: 500;
+        margin-right: 10px;
+        color: var(--color-light-1);
+        text-decoration: line-through;
+      }
+      
+      > div:nth-child(2) {
+        font-size: 18px;
+        line-height: 21px;
+        font-weight: 500;
+        color: var(--color-dark-1);
+      }
+    }
+  }
+
+  &.-hover-shadow {
+    &:hover {
+      box-shadow: 0px 6px 15px 0px #404F680D;
+    }
+  }
+
+  &:hover {
+    color: inherit;
+
+    .coursesCard__image {
+      &_overlay {
+        opacity: 0.5
+      }
+
+      img {
+        transform: scale(1.12);
+      }
+    }
+  }
+}
+
+.coursesCard.-type-2 {
+  transition: all 0.25s $easeOutCubic;
+
+  .coursesCard {}
+
+  &:hover {
+    box-shadow: 0px 25px 70px 0px #01213A12;
+  }
+}
+
+.coursesCard.-type-3 {
+  padding: 0 40px;
+
+  @include media-down(lg) {
+    padding: 0;
+  }
+
+  .coursesCard {
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      font-size: 50px;
+      transition: 0.2s $easeOutCubic;
+
+      .icon {
+        transition: 0.2s $easeOutCubic;
+      }
+    }
+  }
+
+  &:hover {
+    .coursesCard__icon {
+      background-color: var(--color-purple-1) !important;
+
+      .icon {
+        color: white !important;
+      }
+    }
+  }
+}
+
+.coursesCard.-type-4 {
+  transition: all 0.3s $easeOutCubic;
+
+  .coursesCard {
+    &__image {
+      position: relative;
+      overflow: hidden;
+      
+      &_overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-dark-1);
+        opacity: 0;
+        transition: all 0.3s $easeOutCubic;
+      }
+
+      img {
+        z-index: 1;
+        transition: all 0.3s $easeOutCubic;
+      }
+    }
+  }
+
+  &:hover {
+    color: inherit;
+
+    .coursesCard__image {
+      &_overlay {
+        opacity: 0.5
+      }
+
+      img {
+        transform: scale(1.12);
+      }
+    }
+  }
+}

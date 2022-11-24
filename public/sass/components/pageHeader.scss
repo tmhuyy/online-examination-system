@@ -1,0 +1,245 @@
+.page-header.-type-1 {
+  padding-top: 90px;
+  padding-bottom: 40px;
+  
+  @include media-down(md) {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  .page-header {
+    &__title {
+      font-size: 40px;
+      line-height: 45px;
+
+      @include media-down(lg) {
+        font-size: 35px;
+        line-height: 40px;
+      }
+    }
+
+    &__text {
+      font-size: 17px;
+      line-height: 36px;
+      margin-top: 5px;
+
+      @include media-down(lg) {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+.page-header.-type-2 {
+  position: relative;
+  padding-top: 135px;
+  padding-bottom: 135px;
+  margin-top: 90px;
+  z-index: 0;
+  
+  @include media-down(md) {
+    margin-top: 0px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .page-header {
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: black;
+      max-width: 1500px;
+      transform: translateX(-50%);
+      border-radius: 8px;
+      
+      @include media-down(md) {
+        border-radius: 0;
+      }
+      
+      div {
+        border-radius: 8px;
+
+        @include media-down(md) {
+          border-radius: 0;
+        }
+      }
+    }
+
+    &__info {
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 45px;
+
+      @include media-down(lg) {
+        font-size: 35px;
+        line-height: 40px;
+      }
+    }
+  }
+}
+
+.page-header.-type-3 {
+  position: relative;
+  margin-top: 90px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  
+  @include media-down(md) {
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .page-header {
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 180px;
+      right: 180px;
+      z-index: -1;
+      height: 100%;
+      border-radius: 8px;
+
+      @include media-down(xl) {
+        left: 100px;
+        right: 100px;
+      }
+
+      @include media-down(lg) {
+        left: 50px;
+        right: 50px;
+      }
+
+      @include media-down(md) {
+        left: 30px;
+        right: 30px;
+      }
+
+      @include media-down(sm) {
+        left: 0;
+        right: 0;
+        border-radius: 0;
+      }
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 45px;
+
+      @include media-down(lg) {
+        font-size: 35px;
+        line-height: 40px;
+      }
+    }
+
+    &__text {
+      font-size: 17px;
+      line-height: 36px;
+      margin-top: 5px;
+
+      @include media-down(lg) {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+.page-header.-type-4 {
+  position: relative;
+  margin-top: 90px;
+  padding-top: 210px;
+  padding-bottom: 175px;
+  
+  @include media-down(lg) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include media-down(md) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .page-header {
+    &__title {
+      font-size: 40px;
+      line-height: 45px;
+
+      @include media-down(lg) {
+        font-size: 35px;
+        line-height: 40px;
+      }
+    }
+
+    &__text {
+      font-size: 17px;
+      line-height: 36px;
+      margin-top: 5px;
+
+      @include media-down(lg) {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+.page-header.-type-6 {
+  position: relative;
+  margin-top: 90px;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  
+  @include media-down(lg) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include media-down(md) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .page-header {
+    position: relative;
+
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 60px;
+      right: 60px;
+      z-index: -1;
+      height: 100%;
+      border-radius: 8px;
+      
+      @media (max-width: (1300px)) {
+        left: 40px;
+        right: 40px;
+      }
+
+      @include media-down(xl) {
+        left: 40px;
+        right: 40px;
+      }
+
+      @include media-down(md) {
+        left: 20px;
+        right: 20px;
+      }
+
+      @include media-down(sm) {
+        left: 0;
+        right: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}

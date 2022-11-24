@@ -1,0 +1,44 @@
+.featureCard.-type-1 {
+  height: 100%;
+}
+
+.featureCard.-type-1 .featureCard {
+  &__content {
+    height: 100%;
+    background: var(--color-light-3);
+    border-radius: 8px;
+    padding: 26px 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: white;
+    width: 90px;
+    height: 90px;
+
+    img {}
+  }
+
+  &__title {
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 26px;
+    color: var(--color-dark-1);
+  }
+  
+  &__text {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: 400;
+    color: var(--color-light-1);
+  }
+}

@@ -1,0 +1,96 @@
+@mixin media-up($breakpoint) {
+  $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+@mixin media-down($breakpoint) {
+  $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+  @media (max-width: ($breakpoint-value - 1)) {
+    @content;
+  }
+}
+
+@mixin media-between($lower, $upper) {
+  $lower-breakpoint: map-get($breakpoints, $lower);
+  $upper-breakpoint: map-get($breakpoints, $upper);
+
+  @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+    @content;
+  }
+}
+
+
+@function rem($size, $base: $font-size) {
+  @if (type-of($size) == number) {
+    @if (unit($size) != "px") {
+      @error "`#{$size}` needs to be a pixel value.";
+    }
+  } @else {
+    @error "`#{$size}` needs to be a number.";
+  }
+
+  @if (type-of($base) == number) {
+    @if (unit($base) != "px") {
+      @error "`#{$base}` needs to be a pixel value.";
+    }
+  } @else {
+    @error "`#{$base}` needs to be a number.";
+  }
+
+  @return ($size / $base) * 1rem;
+}
+
+
+.ratio {
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    width: 100%;
+    content: "";
+  }
+}
+
+$aspect-ratios: (
+  (1:1),
+  (2:1),
+  (2:3),
+  (3:2),
+  (3:4),
+  (4:3),
+  (5:4),
+  (8:5),
+  (16:9),
+  (30:16),
+  (30:35),
+  (63:57),
+) !default;
+
+//
+// Generate a series of ratio classes to be used like so:
+//
+// @example
+//   <div class="ratio ratio-16:9">
+//
+//
+@each $ratio in $aspect-ratios {
+  @each $antecedent, $consequent in $ratio {
+    @if (type-of($antecedent) != number) {
+      @error "`#{$antecedent}` needs to be a number."
+    }
+
+    @if (type-of($consequent) != number) {
+      @error "`#{$consequent}` needs to be a number."
+    }
+
+    .ratio-#{$antecedent}\:#{$consequent}::before {
+      padding-bottom: ($consequent/$antecedent) * 100%;
+    }
+  }
+}

@@ -1,0 +1,262 @@
+.shopCart {
+
+}
+
+.shopCart-header {
+  padding: 20px 70px;
+  padding-right: 0;
+  background-color: #F9F6F6;
+
+  @include media-down(lg) {
+    padding-left: 40px;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  }
+}
+
+.shopCart-products {
+  @include media-down(sm) {
+    .shopCart-products__cross {
+      left: unset;
+      top: 36px;
+      right: 0;
+    }
+
+    .shopCart-products__item {
+      padding-left: 0px;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  
+  &__item {
+    position: relative;
+    padding: 30px 0;
+    padding-left: 70px;
+    border-bottom: 1px solid #E4E4E4;
+
+    @include media-down(lg) {
+      padding-left: 40px;
+    }
+  }
+
+  &__cross {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    .icon {
+      height: 24px;
+      width: 24px;
+      stroke-width: 1.5;
+    }
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+
+    .image {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      min-height: 80px;
+
+      > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .title {
+      margin-left: 20px;
+      font-size: 14px;
+      line-height: 1;
+    }
+  }
+
+  &__price {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &__subtotal {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.shopCart-sidebar {
+  width: 345px;
+
+  @include media-down(xl) {
+    width: 240px;
+  }
+
+  @include media-down(md) {
+    width: 100%;
+    margin-top: 60px;
+  }
+
+  &__totals {
+    border: 1px solid #E4E4E4;
+    padding: 30px;
+    
+    .title {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19px;
+      color: black;
+      margin-bottom: 28px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      line-height: 45px;
+      text-align: right;
+
+      &.-border-none {
+        border: none !important;
+      }
+    
+      + .item {
+        border-top: 1px solid #E4E4E4;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 20px;
+
+    button {}
+  }
+}
+
+.shopCart-footer {
+  &__item {
+    display: flex;
+    align-items: flex-end;
+
+    @include media-down(xl) {
+      button {
+        min-width: unset !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+    }
+
+    form {
+      width: 250px;
+      
+      @include media-down(sm) {
+        width: 150px;
+      }
+    }
+
+    input {
+      font-size: 14px;
+      line-height: 24px;
+      border-bottom: 1px solid #E4E4E4 !important;
+
+      &:focus {
+        border-bottom: 1px solid #000 !important;
+      }
+    }
+  }
+}
+
+
+
+
+.input-counter {
+  display: flex;
+  position: relative;
+  width: 140px;
+  height: 52px;
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  &__counter {
+    z-index: 5;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    border: 2px solid #EDEDED;
+    border-radius: 8px;
+  }
+  
+  &__controls {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__up {
+    width: 48px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+      stroke-width: 2;
+      color: black;
+      width: 16px;
+      height: 16px;
+    }
+  } 
+
+  &__down {
+    width: 48px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+      stroke-width: 2;
+      color: black;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

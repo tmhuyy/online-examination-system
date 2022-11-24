@@ -1,0 +1,837 @@
+.masthead.-type-1 {
+  z-index: 1;
+  position: relative;
+  padding: 140px 0 160px 0;
+  padding: 140px 0 320px 0;
+  
+  @include media-down(lg) {
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
+  @include media-down(md) {
+    padding-bottom: 80px;
+    padding-bottom: 160px;
+  }
+
+  .container {
+    max-width: 1530px;
+    padding: 0 15px;
+  }
+
+  .masthead {
+    &__bg {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-dark-1);
+  
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    &__content {}
+
+    &__title {
+      font-size: 55px;
+      line-height: 80px;
+      font-weight: 700;
+      color: white;
+
+      @include media-down(lg) {
+        font-size: 50px;
+        line-height: 1.3;
+
+        br {
+          display: none;
+        }
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+      }
+      @include media-down(sm) {
+        font-size: 30px;
+      }
+    }
+
+    &__text {
+      margin-top: 13px;
+      font-size: 17px;
+      line-height: 36px;
+      color: white;
+      
+      @include media-down(lg) {
+        font-size: 16px;
+        line-height: 1.6;
+
+        br {display: none; }
+      }
+
+      @include media-down(sm) {
+        margin-top: 10px;
+        font-size: 15px;
+      }
+    }
+
+    &__buttons {
+      padding-top: 27px;
+
+      @include media-down(md) {
+        padding-top: 15px;
+
+        a {
+          width: 100%;
+        }
+      }
+    }
+
+    &-image {
+      display: grid;
+      gap: 66px;
+      grid-template-columns: 0.6fr 0.4fr;
+      padding-left: 80px;
+
+      @include media-down(lg) {
+        padding-left: 0;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 24px;
+        width: 85%;
+      }
+
+      @include media-down(md) {
+        width: 100%;
+      }
+
+      > * {
+        position: relative;
+      }
+
+      &__el1 {
+        grid-row: span 2;
+        padding-top: 48px;
+
+        > div {
+          position: relative;
+          top: -54px;
+          left: -132px;
+        }
+      }
+
+      &__el2 {
+        display: flex;
+        justify-content: flex-end;
+
+        > div {
+          position: absolute;
+          bottom: -52px;
+          right: 112px;
+        }
+      }
+      
+      &__el3 {
+        display: flex;
+        justify-content: flex-end;
+
+        > div {
+          position: absolute;
+          bottom: -50px;
+          right: 15px;
+        }
+      }
+    }
+  }
+
+  .masthead-info {
+    padding-top: 85px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    @include media-down(lg) {
+      padding-top: 30px;
+    }
+      
+    &__item {
+      width: auto;
+    }
+
+    &__icon {}
+
+    &__title {}
+  }
+}
+
+.masthead.-type-2 {
+  position: relative;
+  z-index: 0;
+  margin-top: 91px;
+  padding: 122px 0;
+
+  @include media-down(lg) {
+    padding: 100px 0;
+  }
+
+  @include media-down(md) {
+    padding: 60px 0;
+  }
+  
+  .row {
+    padding: 0 60px;
+
+    @include media-down(lg) {
+      padding: 0 20px;
+    }
+
+    @include media-down(md) {
+      padding: 0;
+    }
+  }
+
+  .masthead {
+    &__bg {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 60px;
+      right: 60px;
+      z-index: -1;
+      height: 100%;
+      border-radius: 16px;
+
+      @include media-down(lg) {
+        left: 30px;
+        right: 30px;
+      }
+  
+      @include media-down(md) {
+        left: 0;
+        right: 0;
+        border-radius: 0;
+      }
+      
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-dark-1);
+        opacity: 0.7;
+      }
+  
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    &__content {}
+
+    &__title {
+      text-transform: capitalize;
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 70px;
+
+      @include media-down(lg) {
+        font-size: 50px;
+        line-height: 1.3;
+
+        br {
+          display: none;
+        }
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+      }
+      @include media-down(sm) {
+        font-size: 30px;
+      }
+    }
+
+    &__button {
+      display: inline-block;
+
+      a {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .masthead-form {
+    padding: 30px;
+    padding-bottom: 38px;
+    background-color: white;
+    border-radius: 16px;
+
+    &__title {}
+
+    .masthead-form__group + .masthead-form__group {
+      margin-top: 30px;
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: var(--color-dark-1);
+      }
+
+      input {
+        border: 1px solid var(--color-light-8);
+        padding: 15px 22px;
+        border-radius: 8px;
+      }
+
+      button {
+        width: 100%;
+        height: 60px;
+      }
+    }
+
+    &__desc {
+      margin-top: 17px;
+      font-size: 13px;
+      line-height: 22px;
+    }
+  }
+}
+
+.masthead.-type-3 {
+  position: relative;
+  z-index: 0;
+  margin-top: 70px;
+  padding-top: 50px;
+  padding-bottom: 60px;
+
+  @include media-down(lg) {
+    padding-top: 80px;
+  }
+
+  @include media-down(md) {
+    padding-top: 40px;
+  }
+
+  .masthead-image {
+    position: relative;
+    margin-top: -40px;
+
+    @include media-down(lg) {
+      padding-left: 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 24px;
+      width: 85%;
+    }
+
+    @include media-down(md) {
+      width: 100%;
+    }
+
+    &__img1 {
+      img {
+        max-width: unset;
+        width: 100%;
+        // width: 580px;
+      }
+    }
+
+    &__shape > img {
+      position: absolute;
+      top: -18vw;
+      right: -15vw;
+      z-index: -1;
+      width: 50vw;
+    }
+
+    &__el1 {
+      position: absolute;
+      bottom: 210px;
+      right: -40px;
+      width: 234px;
+    }
+
+    &__el2 {
+      position: absolute;
+      bottom: 0;
+      left: 35px;
+    }
+  }
+
+  .masthead-search {
+    &__form {
+      position: relative;
+      width: 600px;
+
+      @include media-down(md) {
+        width: 100%;
+      }
+
+      input {
+        width: 100%;
+        height: 80px;
+        border-radius: 100px;
+        box-shadow: 0px 6px 15px 0px #404F680D;
+        border: 1px solid #ECEDF2;
+        padding: 0 40px;
+        
+        @include media-down(md) {
+          height: 64px;
+          padding: 0 30px;
+          padding-right: 60px;
+        }
+
+        &::placeholder {
+          color: var(--color-light-1);
+        }
+      }
+  
+      .button {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        right: 10px;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        border-radius: 100%;
+        
+        @include media-down(md) {
+          width: 44px;
+        }
+      }
+    }
+
+    &__searches {}
+  }
+
+  .masthead {
+    &__content {}
+
+    &__title {
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 70px;
+
+      @include media-down(xxl) {
+        font-size: 50px;
+        line-height: 1.3;
+        br { display: none; }
+      }
+      
+      @include media-down(lg) {
+        font-size: 45px;
+        br { display: block; }
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+        br { display: none; }
+      }
+
+      @include media-down(sm) {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+.masthead.-type-4 {
+  position: relative;
+  z-index: 0;
+  margin-top: 91px;
+  padding-top: 102px;
+
+  @include media-down(lg) {
+    padding-top: 80px;
+  }
+
+  @include media-down(md) {
+    padding-top: 40px;
+  }
+
+  .masthead {
+    &__image {
+      img {
+        max-width: unset;
+        width: 52vw;
+
+        @include media-down(lg) {
+          width: 100%;
+        }
+      }
+    }
+
+    &__content {
+      padding-bottom: 100px;
+      
+      @include media-down(lg) {
+        padding-bottom: 60px;
+      }
+      
+      @include media-down(md) {
+        padding-bottom: 40px;
+      }
+    }
+
+    &__title {
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 55px;
+      line-height: 80px;
+
+      @include media-down(xxl) {
+        font-size: 50px;
+        line-height: 1.3;
+        br { display: none; }
+      }
+      
+      @include media-down(lg) {
+        font-size: 45px;
+        br { display: block; }
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+        br { display: none; }
+      }
+
+      @include media-down(sm) {
+        font-size: 35px;
+      }
+    }
+
+    &__button {
+    }
+  }
+}
+
+.masthead.-type-5 {
+  position: relative;
+  z-index: 0;
+  padding-top: 180px;
+  padding-bottom: 80px;
+
+  @include media-down(lg) {
+    padding-top: 160px;
+  }
+  
+  @include media-down(sm) {
+  }
+
+  .container {
+    max-width: 1530px;
+    padding: 0 15px;
+  }
+
+  .masthead {
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      img {
+        height: 100%;
+
+        @include media-down(md) {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &__container {
+      padding-left: 210px;
+      padding-right: 60px;
+      
+      @include media-down(lg) {
+        padding-left: 60px;
+      }
+      
+      @include media-down(sm) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
+    &__image {
+      img {
+        width: 100%;
+      }
+    }
+
+    &__content {
+    }
+
+    &__title {
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 55px;
+      line-height: 80px;
+
+      @include media-down(xxl) {
+        font-size: 50px;
+        line-height: 1.3;
+        br { display: none; }
+      }
+      
+      @include media-down(lg) {
+        font-size: 45px;
+        br { display: block; }
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+        br { display: none; }
+      }
+
+      @include media-down(sm) {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+.masthead.-type-6 {
+  position: relative;
+  z-index: 0;
+  padding-top: 140px;
+  padding-bottom: 50px;
+
+  @include media-down(lg) {
+    padding-top: 120px;
+  }
+
+  @include media-down(md) {
+  }
+
+  .masthead {
+    &__bg {
+      > img {
+        position: absolute;
+        top: 0;
+      }
+
+      > img:nth-child(1) {
+        left: 0;
+      }
+
+      > img:nth-child(2) {
+        right: 0;
+      }
+
+      > img:nth-child(3) {
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    &__image {
+      margin-right: -40px;
+      img {
+        width: 100%;
+      }
+    }
+
+    &__title {
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 55px;
+      line-height: 1.2;
+
+      @include media-down(xxl) {
+        font-size: 50px;
+        br { display: none; }
+      }
+      
+      @include media-down(lg) {
+        font-size: 45px;
+        br { display: block; }
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+        br { display: none; }
+      }
+
+      @include media-down(sm) {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+.masthead.-type-7 {
+  position: relative;
+  z-index: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 120px;
+  
+  @media (max-width: (1700px)) {
+    margin-top: 90px;
+  }
+  
+  @include media-down(lg) {
+    padding-top: 90px;
+    margin-top: 30px;
+  }
+  
+  @include media-down(md) {
+    margin-top: 0;
+  }
+
+  .masthead {
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 15px;
+      right: 15px;
+      height: 100%;
+      
+      @media (max-width: (1700px)) {
+        top: 0;
+        left: -15px;
+        right: -15px;
+        border-radius: 0 !important;
+      }
+      
+      > img {
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__image {
+      img {
+        width: 100%;
+      }
+    }
+
+    &__title {
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 55px;
+      line-height: 1.2;
+
+      @include media-down(xxl) {
+        font-size: 50px;
+        br { display: none; }
+      }
+      
+      @include media-down(lg) {
+        font-size: 45px;
+        br { display: block; }
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+        br { display: none; }
+      }
+
+      @include media-down(sm) {
+        font-size: 35px;
+      }
+    }
+  }
+
+  .masthead-image {
+    position: relative;
+
+    &__img1 > img {
+      width: 100%;
+    }
+
+    .-el-1 {
+      position: absolute;
+      bottom: 1.6vw;
+      right: 5vw;
+
+      @include media-down(sm) {
+        display: none;
+      }
+    }
+    
+    .-el-2 {
+      position: absolute;
+      top: 7vw;
+      left: 0.5vw;
+      
+      @include media-down(sm) {
+        display: none;
+      }
+    }
+    
+    .-el-3 {
+      position: absolute;
+      top: 9vw;
+      right: 2.6vw;
+
+      @include media-down(sm) {
+        display: none;
+      }
+    }
+  }
+
+  .masthead-form {
+    position: relative;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      flex: 1 0 auto;
+
+      + .masthead-form__item {
+        border-left: 1px solid var(--color-light-5);
+        
+        @media (max-width: 960px) {
+          border-left: 0;
+        }
+      }
+      
+      input {
+        max-width: 100px;
+      }
+    }
+    
+    &__button {
+      height: 60px;
+      width: 25%;
+      flex: 1 0 auto;
+      
+      @media (max-width: 1350px) {
+        width: 100%;
+      }
+      
+      button {
+        width: 100%;
+        min-width: 120px;
+        height: 100%;
+        border-radius: 16px;
+      }
+    }
+  }
+}

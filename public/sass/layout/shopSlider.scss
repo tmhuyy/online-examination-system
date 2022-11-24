@@ -1,0 +1,31 @@
+.noUi-target {
+  height: 5px;
+  border: none;
+  background-color: #CCE0F8;
+  border-radius: 4px;
+  position: relative;
+}
+
+.noUi-connect {
+  background-color: var(--color-purple-1) !important;
+  box-shadow: 0 !important;
+}
+
+.noUi-handle {
+  border-radius: 100%;
+  width: 17px !important;
+  height: 17px !important;
+  top: 50% !important;
+  transform: translateY(-35%);
+  right: -10px !important;
+  border: 2px solid var(--color-purple-1);
+  box-shadow: 0 !important;
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    display: none;
+  }
+}

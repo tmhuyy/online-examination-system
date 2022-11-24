@@ -1,0 +1,79 @@
+.form-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+
+  @include media-down(lg) {
+    display: block;
+    height: auto;
+  }
+  
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40vw;
+
+    @include media-down(lg) {
+      width: 100%;
+      position: relative;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 100%;
+
+    @include media-down(lg) {
+      width: 100%;
+    }
+  }
+
+  &-composition {
+    position: relative;
+
+    .-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .-el-1 {
+      width: 100%;
+    }
+
+    .-el-2 {
+      position: absolute;
+      bottom: 33px;
+      right: 90px;
+    }
+
+    .-el-3 {
+      position: absolute;
+      bottom: 290px;
+      left: 20px;
+    }
+
+    .-el-4 {
+      position: absolute;
+      bottom: 300px;
+      right: 52px;
+    }
+  }
+}
+
+.form-page-contact {}

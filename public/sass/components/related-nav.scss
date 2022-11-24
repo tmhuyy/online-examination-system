@@ -1,0 +1,66 @@
+.related-nav {
+  border-top: 1px solid #EEEEEE;
+  
+  &__icon {
+    width: 20px;
+    height: 20px;
+
+    > * {
+      padding: 2px;
+    }
+
+    span {
+      display: block;
+      width: 4px;
+      height: 4px;
+      background-color: #404046;
+    }
+  }
+  
+  &__item {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    > * {
+      padding-left: 10px;
+      padding-right: 10px;
+
+      @include media-down(md) {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    }
+
+    &:hover {
+      span,
+      .icon {
+        color: var(--color-accent) !important;
+      }
+    }
+
+    &.-next {
+      justify-content: flex-end;
+      text-align: right;
+    }
+  }
+  
+  &__arrow {
+    .icon {
+      font-size: 24px;
+      color: black;
+      transition: all 0.1s ease-out;
+    }
+  }
+  
+  &__content {
+    span,
+    p {
+      text-decoration: none !important;
+    }
+
+    div {
+    }
+  }
+}

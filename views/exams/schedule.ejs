@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate')%>
+
+<table class="table mt-80">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Subject code</th>
+            <th scope="col">Subject name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Date</th>
+            <th scope="col">Start hour</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for( let i = 0; i <= (examsOfStudent.length - 1); i++ ) { %>
+            <tr>
+                <th scope="row"><%= i + 1  %> </th>
+                <td><%= examsOfStudent[i].course._id  %></td>
+                <td><%= examsOfStudent[i].course.name  %></td>
+                <td><%= examsOfStudent[i].students.length  %></td>
+                <td><%= examsOfStudent[i].startTime.toLocaleDateString()  %></td>
+                <td><%= examsOfStudent[i].startTime.toLocaleTimeString()  %></td>
+                <td><%= (examsOfStudent[i].endTime - examsOfStudent[i].startTime) /60000  %> minutes</td>
+                <td><%= examsOfStudent[i].room  %></td>
+            </tr>
+        <% } %>>
+        
+    </tbody>
+</table>

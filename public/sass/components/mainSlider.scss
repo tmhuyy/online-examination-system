@@ -1,0 +1,183 @@
+.mainSlider.-type-1 {
+  position: relative;
+  z-index: 0;
+  
+  .swiper-wrapper {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    z-index: 1;
+    position: relative;
+    padding-top: 232px;
+    padding-bottom: 34px;
+
+    @include media-down(lg) {
+      padding-top: 180px;
+      padding-bottom: 40px;
+    }
+    @include media-down(md) {
+      padding-top: 160px;
+      padding-bottom: 50px;
+    }
+  }
+
+  .swiper-prev {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 60px;
+    
+    @include media-down(lg) {
+      left: 15px;
+    }
+    @include media-down(md) {
+      display: none !important;
+    }
+  }
+
+  .swiper-next {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 60px;
+    
+    @include media-down(lg) {
+      right: 15px;
+    }
+    @include media-down(md) {
+      display: none !important;
+    }
+  }
+
+  .mainSlider {
+    &__bg {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-dark-1);
+        opacity: 0.5;
+      }
+    }
+
+    &__content {
+      padding-top: 260px;
+
+      @include media-down(lg) {
+        padding-top: 140px;
+      }
+
+      @include media-down(md) {
+        padding-top: 180px;
+      }
+    }
+
+    &__title {
+      font-size: 55px;
+      line-height: 80px;
+
+      @include media-down(lg) {
+        font-size: 45px;
+        line-height: 1.3;
+      }
+      
+      @include media-down(md) {
+        font-size: 40px;
+      }
+    }
+
+    &__text {
+      font-size: 17px;
+      line-height: 36px;
+      margin-top: 13px;
+      
+      @include media-down(lg) {
+        margin-top: 15px;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+    }
+
+    &__form {
+      position: relative;
+      margin-top: 43px;
+
+      @include media-down(lg) {
+        margin-top: 35px;
+      }
+
+      input {
+        width: 100%;
+        height: 70px;
+        font-size: 15px;
+        line-height: 26px;
+        background-color: white;
+        color: var(--color-light-1);
+        border-radius: 100px;
+        padding: 22px 35px;
+        
+        @include media-down(md) {
+          padding: 14px 24px;
+          height: 50px;
+        }
+
+        &::placeholder {
+          color: inherit;
+        }
+      }
+
+      button {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        right: 10px;
+        height: auto;
+        min-width: auto;
+        padding: 15px 32px;
+        border-radius: 100px;
+
+        @include media-down(md) {
+          top: unset;
+          bottom: unset;
+          right: unset;
+          position: relative;
+          height: 50px;
+          width: 100%;
+          margin-top: 15px;
+        }
+      }
+    }
+
+    &__items {
+      padding-top: 120px;
+      padding-bottom: 30px;
+
+      @include media-down(xl) {
+        padding-top: 80px;
+      }
+      @include media-down(lg) {
+        padding-top: 50px;
+      }
+    }
+  }
+
+  .mainSlider-item {}
+}

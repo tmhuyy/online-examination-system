@@ -1,0 +1,180 @@
+button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  text-decoration: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 8px;
+  line-height: 1;
+  font-weight: 400;
+  transition: all 0.3s $easeOutQuart;
+}
+
+.button {
+  &.-sm {
+    padding: 6px 34px;
+    font-size: 15px;
+    height: 40px;
+  }
+
+  &.-md {
+    padding: 12px 55px;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 500;
+    height: 60px;
+  }
+
+  &.-icon {
+    min-width: 120px;
+    padding: 14px 30px;
+    font-size: 15px;
+    height: 50px;
+  }
+
+  &.-single-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.-narrow {
+    min-width: unset;
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 50px;
+  }
+
+  &.-rounded {
+    border-radius: 100px;
+  }
+
+  &.-underline:hover {
+    text-decoration: underline;
+  }
+}
+
+@each $name, $color in $colors {
+  .button.-#{$name} {
+    background-color: var(--color-#{$name});
+    border: 2px solid var(--color-#{$name});
+    
+    &:hover {
+      background-color: transparent !important;
+      color: var(--color-#{$name}) !important;
+    }
+  }
+
+  .button.-outline-#{$name} {
+    border: 2px solid var(--color-#{$name});
+
+    &:hover {
+      background-color: var(--color-#{$name});
+      border-color: transparent;
+      color: white !important;
+    }
+  }
+}
+
+.button {
+  &.-white-20 {
+    background-color: rgba(white, 0.2);
+    &:hover {
+      background-color: rgba(white, 1);
+      color: var(--color-dark-1) !important;
+    }
+  }
+  &.-gradient-1 {
+    background: linear-gradient(90deg, #6440FB 0%, #E8543E 108.34%);
+    &:hover {
+      color: var(--color-dark-1) !important;
+    }
+  }
+  &.-purple-3:hover {
+    color: white !important;
+    background-color: var(--color-purple-1) !important;
+  }
+  &.-dark-6:hover {
+    color: var(--color-dark-1) !important;
+    background-color: white !important;
+  }
+  &.-light-7:hover {
+    color: white !important;
+    background-color: var(--color-purple-1) !important;
+    border-color: var(--color-purple-1) !important;
+  }
+  &.-outline-green-1:hover {
+    color: var(--color-dark-1) !important;
+  }
+  &.-outline-white:hover {
+    color: var(--color-dark-1) !important;
+  }
+  &.-outline-light-5:hover {
+    color: var(--color-dark-1) !important;
+  }
+}
+
+.dropdown {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  
+  &__button {
+    height: 50px;
+    border-radius: 8px;
+    background-color: var(--color-light-3);
+    padding: 12px 16px;
+  }
+
+  .icon {
+    transition: all 0.2s $easeOutQuart;
+  }
+
+  &.-is-dd-active {
+    // outline: 4px solid rgba(#6440FB, 0.15);
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+  
+  &__item {
+    position: absolute;
+    z-index: 500;
+    pointer-events: none;
+    top: 100%;
+    left: 50%;
+    padding: 26px;
+    background-color: white;
+    box-shadow: 0px 25px 70px rgba(1, 33, 58, 0.07);
+    min-width: 180px;
+    border-radius: 8px;
+    transition: all 0.2s $easeOutQuart;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  &:hover {
+    .dropdown__item {
+      z-index: 20;
+      transform: translateX(-50%);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
