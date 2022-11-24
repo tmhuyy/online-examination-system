@@ -12,7 +12,8 @@ const teacherDetail = require("./teacherDetail");
 const courseDetail = require("./courseDetail");
 const recordDetail = require("./recordDetail");
 
-const mongoDB = "mongodb://localhost:27017/online-examination-system";
+const mongoDB =
+    "mongodb+srv://minhhuy123:Tuilahuy123@cluster0.tpopnup.mongodb.net/onlineExamSystem?retryWrites=true&w=majority";
 mongoose
     .connect(mongoDB, {
         useUnifiedTopology: true,
@@ -140,7 +141,7 @@ const addnew = async () => {
     const student = new Student({
         email: "admin123@gmail.com",
         username: "tumap123",
-        phoneNumber: "0793526726"
+        phoneNumber: "0793526726",
     });
     const password = "tu123";
     const newStudent = await Student.register(student, password);
@@ -151,15 +152,15 @@ const addnew = async () => {
 // seedExam();
 // seedRecord();
 const addAdmin = async () => {
-  const admin = new Admin({
-    email: "admin123@gmail.com",
-    username: "admin123",
-    password: "admin123"
-  });
-  // const password = "admin123";
+    const admin = new Admin({
+        email: "admin123@gmail.com",
+        username: "admin123",
+        password: "admin123",
+    });
+    // const password = "admin123";
 
-  const newAdmin = new Admin(admin);
-  await newAdmin.save();
+    const newAdmin = new Admin(admin);
+    await newAdmin.save();
 };
-// addAdmin()
+addAdmin()
 // console.log(random2);
