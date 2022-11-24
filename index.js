@@ -118,7 +118,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(
 );
 app.use(adminJs.options.rootPath, router);
 
-const mongoDB = "mongodb://localhost:27017/online-examination-system";
+const mongoDB = "mongodb+srv://minhhuy123:Tuilahuy123@cluster0.tpopnup.mongodb.net/onlineExamSystem?retryWrites=true&w=majority";
 mongoose
     .connect(mongoDB, {
         useUnifiedTopology: true,
