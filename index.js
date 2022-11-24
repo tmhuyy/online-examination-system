@@ -162,11 +162,12 @@ const configSession = {
 app.use(session(configSession));
 app.use(flash());
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new localStrategy(Student.authenticate()));
-passport.serializeUser(Student.serializeUser());
-passport.deserializeUser(Student.deserializeUser());
+// comment to change the way to register and login student
+// app.use(passport.initialize());
+// app.use(passport.session());
+// passport.use(new localStrategy(Student.authenticate()));
+// passport.serializeUser(Student.serializeUser());
+// passport.deserializeUser(Student.deserializeUser());
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
