@@ -24,9 +24,9 @@ const CourseSchema = new Schema({
 });
 
 CourseSchema.pre("save", async function (next) {
-    console.log("cb lu");
+    // console.log("cb lu");
     next();
-    console.log("LUu");
+    // console.log("LUu");
 });
 
 const Course = mongoose.model("Course", CourseSchema);

@@ -23,12 +23,12 @@ const StudentSchema = new Schema({
         required: true,
         unique: true,
     },
-    courses: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Course",
-        },
-    ],
+    // courses: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Course",
+    //     },
+    // ],
 });
 
 StudentSchema.statics.findAndValidate = async function (username, password) {

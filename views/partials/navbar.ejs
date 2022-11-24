@@ -31,7 +31,10 @@
             <% if (!student) { %>
             <a href="/login" class="text-dark-1">Log in</a>
             <% } else { %>
-            <a href="/logout" class="text-dark-1">Log out</a>
+              <form action="/logout" method="POST">
+                <button type="submit" class="text-white">Log Out</button>
+              </form> 
+            <!-- <a href="/logout" class="text-dark-1">Log out</a> -->
             <% } %>
 
           </div>
@@ -687,7 +690,9 @@
             <a href="/login" class="button -sm -white text-dark-1 ">Log in</a>
             <% } else { %>
             <p class="text-red fw-600 mr-30 text-20">Hello <%= student.username %></p>
-            <a href="/logout" class="button -sm -white text-dark-1 ">Log out</a>
+            <form action="/logout" method="POST">
+              <button type="submit" class="text-white">Log Out</button>
+            </form>            
             <% } %>
 
           </div>

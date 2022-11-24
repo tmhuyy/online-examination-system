@@ -82,7 +82,10 @@ const adminJs = new AdminJS({
                             filter: false,
                             show: false
                         }
-                    }
+                    },
+                    _id: {
+                        isTitle: true,
+                    },
                 }
             }
         },
@@ -184,10 +187,10 @@ app.use(flash());
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
-    res.locals.student = req.user;
+    res.locals.student = req.session.student;
     next();
 });
-
+    
 app.use("/", studentRoutes);
 app.use("/", examRoutes);
 
