@@ -73,6 +73,18 @@ const adminJs = new AdminJS({
         },
         {
             resource: Student,
+            options: {
+                properties: {
+                    password: {
+                        isVisible: {
+                            list: false,
+                            edit: true,
+                            filter: false,
+                            show: false
+                        }
+                    }
+                }
+            }
         },
         {
             resource: Course,
