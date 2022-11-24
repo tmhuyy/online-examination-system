@@ -1,4 +1,3 @@
-const { CLIENT_COMPRESS } = require("mysql/lib/protocol/constants/client");
 const Exam = require("../models/exam");
 const Record = require("../models/record");
 const Student = require("../models/student");

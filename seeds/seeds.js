@@ -43,19 +43,18 @@ const seedStudent = async function () {
 const seedCourse = async function () {
     const studentList = await Student.find();
     await Course.deleteMany();
-    
+
     for (let i = 0; i <= courseDetail.length - 1; i++) {
         let students = [];
         const _id = courseDetail[i]._id;
         const name = courseDetail[i].name;
         const credit = courseDetail[i].credit;
-        for (let j = 0; j <= (studentList.length - 1); j++) {
-            
+        for (let j = 0; j <= studentList.length - 1; j++) {
             if (studentList[j].courses.includes(_id)) {
-                console.log("hello")
+                console.log("hello");
                 students.push(studentList[j]._id);
             } else {
-                console.log("hi")
+                console.log("hi");
             }
         }
 
@@ -84,7 +83,7 @@ const seedExam = async function () {
             endTime,
             room,
             course,
-            students, 
+            students,
             // score
         });
         await exam.save();
@@ -121,7 +120,7 @@ const seedRecord = async function () {
             courseID,
             score,
         });
-        await record.save()
+        await record.save();
         // console.log(recordDetail[i])
     }
 };
@@ -137,11 +136,30 @@ const seedRecord = async function () {
 // Student.deleteMany()'
 
 // seedCourse();
-
+const addnew = async () => {
+    const student = new Student({
+        email: "admin123@gmail.com",
+        username: "tumap123",
+        phoneNumber: "0793526726"
+    });
+    const password = "tu123";
+    const newStudent = await Student.register(student, password);
+};
 // seedStudent();
 // seedDb();
 // const random2 = Math.floor(Math.random() * 1);
 // seedExam();
 // seedRecord();
+const addAdmin = async () => {
+  const admin = new Admin({
+    email: "admin123@gmail.com",
+    username: "admin123",
+    password: "admin123"
+  });
+  // const password = "admin123";
 
+  const newAdmin = new Admin(admin);
+  await newAdmin.save();
+};
+// addAdmin()
 // console.log(random2);

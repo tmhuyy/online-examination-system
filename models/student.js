@@ -15,10 +15,18 @@ const studentShema = new Schema({
     },
     courses: [
         {
-            type: String,
-            ref: Course,
+            type: Schema.Types.ObjectId,
+            ref: "Course",
         },
     ],
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
 });
 
 // automatically add a username and password
