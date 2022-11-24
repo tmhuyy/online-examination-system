@@ -13,7 +13,7 @@
         <% for( let index = 0; index < recordOfStudent.length; index++ ) { %>
             <tr>
                 <th scope="row"><%= index + 1%></th>
-                <td><%= recordOfStudent[index].courseID._id%></td>
+                <td><%= recordOfStudent[index].courseID.subjectID%></td>
                 <td><%= recordOfStudent[index].courseID.name%></td>
                 <td><%= recordOfStudent[index].courseID.credit%></td>
                 <td><%= recordOfStudent[index].score%></td>

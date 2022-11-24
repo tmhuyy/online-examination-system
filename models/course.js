@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Student = require("./student")
-const Teacher = require("./teacher")
 
-const courseSchema = new Schema({
-    _id: {
+const CourseSchema = new Schema({
+    // _id: {
+    //     type: String
+    // },
+    subjectID: {
         type: String
     },
     name: {
@@ -17,11 +18,17 @@ const courseSchema = new Schema({
     students: [
         {
             type: Schema.Types.ObjectId,
-            ref: Student,
+            ref: "Student",
         },
     ],
 });
 
-const Course = mongoose.model("Course", courseSchema);
+CourseSchema.pre("save", async function (next) {
+    console.log("cb lu");
+    next();
+    console.log("LUu");
+});
+
+const Course = mongoose.model("Course", CourseSchema);
 
 module.exports = Course;

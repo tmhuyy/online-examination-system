@@ -29,7 +29,7 @@ module.exports = [
         courses: [
             "ITIT01",
             "ITIT03",
-            "ITIT04",
+            "ITIT04", 
             "ITIT05",
             "MAIU03",
             "MAIU02",

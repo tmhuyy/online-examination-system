@@ -24,6 +24,7 @@ const AppError = require("./utils/AppError");
 const Student = require("./models/student");
 const Admin = require("./models/admin");
 const Exam = require("./models/exam");
+const Course = require("./models/course");
 const Record = require("./models/record");
 
 const studentRoutes = require("./routes/studentRoutes");
@@ -37,22 +38,57 @@ const adminJs = new AdminJS({
     resources: [
         {
             resource: Admin,
+            features: [],
             options: {
                 // or you can provide an object with your custom resource options
                 properties: {
                     password: {
                         isVisible: false,
                     },
+                    _id: {
+                        isTitle: true,
+                    },
                 },
                 actions: {
                     new: {
                         isVisible: false,
+                    },
+                    delete: {
+                        isVisible: false,
+                    },
+                    edit: {
+                        isAccessible: (context) => {
+                            const { record, currentAdmin } = context;
+
+                            // We are only allowing to edit records created by currently logged in user
+                            return (
+                                record?.params?.createdByUserId ===
+                                currentAdmin.id
+                            );
+                        },
+                        isVisible: true,
                     },
                 },
             },
         },
         {
             resource: Student,
+        },
+        {
+            resource: Course,
+        },
+        {
+          resource: Exam,
+          options: {
+            actions: {
+              new: {
+                showInDrawer: true
+              }
+            }
+          }
+        },
+        {
+            resource: Record,
         },
     ],
     databases: [], // We don’t have any resources connected yet.

@@ -27,6 +27,7 @@ AdminSchema.statics.findAndValidate = async function (email, password) {
 };
 
 AdminSchema.pre("save", async function (next) {
+  // neu password duoc sua doi
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 10);
     return next();
