@@ -22,7 +22,6 @@ const ExamSchema = new Schema({
     },
     endTime: {
         type: Date,
-        unique: true,
     },
     students: [
         {

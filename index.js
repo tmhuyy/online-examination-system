@@ -33,6 +33,22 @@ const app = express();
 
 AdminJS.registerAdapter(AdminJSMongoose);
 
+const isValidExamDate = function (initExam, newExam) {
+    if (Date.parse(newExam.startTime) < initExam.startTime.getTime()) {
+        if (Date.parse(newExam.endTime) > initExam.startTime.getTime()) {
+            return false;
+        } else {
+            return true;
+        }
+    } else if (Date.parse(newExam.startTime) > initExam.startTime.getTime()) {
+        if (Date.parse(newExam.startTime) < initExam.endTime.getTime()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
 // Very basic configuration of AdminJS.
 const adminJs = new AdminJS({
     resources: [
@@ -80,30 +96,49 @@ const adminJs = new AdminJS({
                             list: false,
                             edit: true,
                             filter: false,
-                            show: false
-                        }
+                            show: false,
+                        },
                     },
                     _id: {
                         isTitle: true,
                     },
                     courses: {
-                        isVisible: false
-                    }
-                }
-            }
+                        isVisible: false,
+                    },
+                },
+            },
         },
         {
             resource: Course,
         },
         {
-          resource: Exam,
-          options: {
-            actions: {
-              new: {
-                showInDrawer: true
-              }
-            }
-          }
+            resource: Exam,
+            options: {
+                actions: {
+                    new: {
+                        before: async (request) => {
+                            const exams = await Exam.find();
+                            const newExam = request?.payload;
+                            if (exams) {
+                                for (let exam of exams) {
+                                    if (isValidExamDate(exam, newExam)) {
+                                        return request;
+                                    } else {
+                                        console.log(
+                                            "OH Boy!!! Overlap Exam Time"
+                                        );
+                                        return;
+                                    }
+                                }
+                                return request;
+                            } else {
+                                return request;
+                            }
+                            // return request
+                        },
+                    },
+                },
+            },
         },
         {
             resource: Record,
@@ -136,7 +171,8 @@ const router = AdminJSExpress.buildAuthenticatedRouter(
 );
 app.use(adminJs.options.rootPath, router);
 
-const mongoDB = "mongodb+srv://minhhuy123:Tuilahuy123@cluster0.tpopnup.mongodb.net/onlineExamSystem?retryWrites=true&w=majority";
+const mongoDB =
+    "mongodb+srv://minhhuy123:Tuilahuy123@cluster0.tpopnup.mongodb.net/onlineExamSystem?retryWrites=true&w=majority";
 mongoose
     .connect(mongoDB, {
         useUnifiedTopology: true,
@@ -193,7 +229,7 @@ app.use((req, res, next) => {
     res.locals.student = req.session.student;
     next();
 });
-    
+
 app.use("/", studentRoutes);
 app.use("/", examRoutes);
 

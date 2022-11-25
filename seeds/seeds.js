@@ -162,5 +162,68 @@ const addAdmin = async () => {
     const newAdmin = new Admin(admin);
     await newAdmin.save();
 };
-addAdmin()
+// addAdmin()
+
+// const newExam = async () => {
+//     const exam = new Exam({
+//         course: "6380cc4dbafbc7e424b382b9",
+//         semester: 1,
+//         room: "A2.002",
+//         students: ["6380cadbbafbc7e424b38234"],
+//     });
+//     await exam.save();
+// };
+
+
+
+// const isValidExamDate = function (initExam, newExam) {
+//     if (newExam.startTime.getTime() < initExam.startTime.getTime()) {
+//         if (newExam.endTime.getTime() > initExam.startTime.getTime()) {
+//             return 0;
+//         } else {
+//             return 1;
+//         }
+//     } else if (newExam.startTime.getTime() > initExam.startTime.getTime()) {
+//         if (newExam.startTime.getTime() < initExam.endTime.getTime()) {
+//             return 0;
+//         } else {
+//             return 1;
+//         }
+//     }
+// };
+
+const exam = {
+    name: "pdm",
+    startTime: new Date("2022-11-25 03:30:00"),
+    endTime: new Date("2022-11-25 03:45:00"),
+    room: "A202",
+};
+
+const newExam = async () => {
+    const exam = new Exam({
+        course: "6380cc4dbafbc7e424b382b9",
+        startTime: new Date("2022-11-25 03:30:00"),
+        endTime: new Date("2022-11-25 05:00:00"),
+        semester: 1,
+        room: "A2.008",
+        students: ["6380cadbbafbc7e424b38234"],
+    });
+    await exam.save();
+};
+
+// const testValidate = async () => {
+//     const exams = await Exam.find();
+//     for (let exam of exams) {
+//         console.log(isValidExamDate(exam, newExam));
+//     }
+// };
+
+// testValidate().then(() => {
+//     mongoose.connection.close();
+// });
 // console.log(random2);
+
+
+newExam().then(() => {
+    mongoose.connection.close();
+});
