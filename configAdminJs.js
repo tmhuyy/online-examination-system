@@ -86,6 +86,18 @@ const adminJs = new AdminJS({
         },
         {
             resource: Course,
+            options: {
+                actions: {
+                    delete: {
+                        after: async (response) => {
+                            const deletedCourse = response?.record?.params?._id;
+                            await Exam.deleteMany({ course: deletedCourse });
+                            await Record.deleteMany({courseID: deletedCourse})
+                            return response;
+                        },
+                    },
+                },
+            },
         },
         {
             resource: Exam,
@@ -130,4 +142,4 @@ const adminJs = new AdminJS({
     // Path to the AdminJS dashboard.
 });
 
-module.exports = adminJs
+module.exports = adminJs;

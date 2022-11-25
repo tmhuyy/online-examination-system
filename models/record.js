@@ -7,7 +7,7 @@ const RecordSchema = new Schema({
         ref: "Student"
     },
     courseID: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "Course"
     },
     score: {
