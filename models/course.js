@@ -6,10 +6,14 @@ const CourseSchema = new Schema({
     //     type: String
     // },
     subjectID: {
-        type: String
+        type: String,
+        unique: true,
+        required: true
     },
     name: {
         type: String,
+        unique: true,
+        required: true
     },
     credit: {
         type: Number,
@@ -19,13 +23,14 @@ const CourseSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: "Student",
+            required: true
         },
     ],
 });
 
-CourseSchema.pre("save", async function (next) {
-    // console.log("cb lu");
-    next();
+CourseSchema.post("save", async function (course, next) {
+    console.log(course._id);
+    // next();
     // console.log("LUu");
 });
 
