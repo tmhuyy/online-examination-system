@@ -28,10 +28,20 @@
           <div class="mobile-bg js-mobile-bg"></div>
 
           <div class="d-none xl:d-flex items-center px-20 py-20 border-bottom-light">
+            
             <% if (!student) { %>
-            <a href="/login" class="text-dark-1">Log in</a>
+              <!-- <form action="/login" method="GET">
+                <button data-barba type="submit" class="text-white button -md -purple-1 ">Log in</button>
+              </form> -->
+            <a href="/login" class="text-dark-1 button -sm -purple-1">Log in</a>
             <% } else { %>
-            <a href="/logout" class="text-dark-1">Log out</a>
+          
+                <p class="text-dark text-20 fw-600 mr-10">Hello <%= student.username%></p>
+                <form action="/logout" method="POST">
+                  <button data-barba type="submit" class="button -sm -outline-purple-1 text-purple-1">Log Out</button>
+                </form> 
+              
+            <!-- <a href="/logout" class="text-dark-1">Log out</a> -->
             <% } %>
 
           </div>
@@ -684,10 +694,15 @@
           <!-- Log In -->
           <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
             <% if (!student) { %>
+              <!-- <form action="/login" method="GET">
+                <button data-barba type="submit" class="button -md -outline-purple-1 text-purple-1">Log in</button>
+              </form> -->
             <a href="/login" class="button -sm -white text-dark-1 ">Log in</a>
             <% } else { %>
             <p class="text-red fw-600 mr-30 text-20">Hello <%= student.username %></p>
-            <a href="/logout" class="button -sm -white text-dark-1 ">Log out</a>
+            <form action="/logout" method="POST">
+              <button type="submit" class="button -sm -outline-purple-1 text-purple-1">Log Out</button>
+            </form>            
             <% } %>
 
           </div>

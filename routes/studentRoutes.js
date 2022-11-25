@@ -9,15 +9,8 @@ const studentController = require("../controllers/studentController");
 router
     .route("/login")
     .get(studentController.renderLoginForm)
-    .post(
-        passport.authenticate("local", {
-            failureFlash: true,
-            failureRedirect: "/login",
-            keepSessionInfo: true,
-        }),
-        studentController.login
-    );
+    .post(studentController.login);
 
-router.get("/logout", studentController.logout);
+router.post("/logout", studentController.logout);
 
 module.exports = router;

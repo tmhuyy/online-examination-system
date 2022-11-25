@@ -1,30 +1,40 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const examSchema = new Schema({
+const ExamSchema = new Schema({
     course: {
         type: Schema.Types.ObjectId,
-        ref: "Course"
+        ref: "Course",
+        required: true,
     },
-    semester: Number,
+    semester: {
+        type: Number,
+        enum: [1, 2],
+    },
     room: {
         type: String,
+        unique: true,
+        // required: true
     },
     startTime: {
-        type: Date
+        type: Date,
+        unique: true,
     },
     endTime: {
         type: Date,
+        unique: true,
     },
     students: [
         {
             type: Schema.Types.ObjectId,
             ref: "Student",
-        }
+            required: true,
+        },
     ],
-    
 });
 
-const Exam = mongoose.model("Exam", examSchema);
+// ExamSchema.pre("save", async function (next) {});
 
-module.exports = Exam;  
+const Exam = mongoose.model("Exam", ExamSchema);
+
+module.exports = Exam;

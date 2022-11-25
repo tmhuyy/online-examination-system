@@ -17,13 +17,13 @@
         <% for( let i = 0; i <= (examsOfStudent.length - 1); i++ ) { %>
             <tr>
                 <th scope="row"><%= i + 1  %> </th>
-                <td><%= examsOfStudent[i].course.subjectID  %></td>
-                <td><%= examsOfStudent[i].course.name  %></td>
-                <td><%= examsOfStudent[i].students.length  %></td>
-                <td><%= examsOfStudent[i].startTime.toLocaleDateString()  %></td>
-                <td><%= examsOfStudent[i].startTime.toLocaleTimeString()  %></td>
-                <td><%= (examsOfStudent[i].endTime - examsOfStudent[i].startTime) /60000  %> minutes</td>
-                <td><%= examsOfStudent[i].room  %></td>
+                <td><%= examsOfStudent[i]?.course?.subjectID  %></td>
+                <td><%= examsOfStudent[i]?.course?.name  %></td>
+                <td><%= examsOfStudent[i]?.students?.length  %></td>
+                <td><%= examsOfStudent[i]?.startTime?.toLocaleDateString()  %></td>
+                <td><%= examsOfStudent[i]?.startTime?.toLocaleTimeString()  %></td>
+                <td><%= ((examsOfStudent[i]?.endTime - examsOfStudent[i]?.startTime) /60000) || 0  %> minutes </td>
+                <td><%= examsOfStudent[i]?.room  %></td>
             </tr>
         <% } %>>
         

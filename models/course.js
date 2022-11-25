@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const Exam = require("./exam");
 const CourseSchema = new Schema({
     // _id: {
     //     type: String
     // },
     subjectID: {
-        type: String
+        type: String,
+        unique: true,
+        required: true
     },
     name: {
         type: String,
+        unique: true,
+        required: true
     },
     credit: {
         type: Number,
@@ -19,14 +23,17 @@ const CourseSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: "Student",
+            required: true
         },
     ],
 });
 
-CourseSchema.pre("save", async function (next) {
-    console.log("cb lu");
-    next();
-    console.log("LUu");
+CourseSchema.post("save", async function (course, next) {
+    const exam = new Exam({
+        course: course._id,
+        students: course.students
+    });
+    await exam.save();
 });
 
 const Course = mongoose.model("Course", CourseSchema);
