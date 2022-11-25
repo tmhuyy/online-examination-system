@@ -17,139 +17,18 @@ const bodyParser = require("body-parser");
 
 const AdminJS = require("adminjs");
 const AdminJSExpress = require("@adminjs/express");
-const AdminJSMongoose = require("@adminjs/mongoose");
 
 // const Student = require("./models/student");
 const AppError = require("./utils/AppError");
-const Student = require("./models/student");
 const Admin = require("./models/admin");
-const Exam = require("./models/exam");
-const Course = require("./models/course");
-const Record = require("./models/record");
 
 const studentRoutes = require("./routes/studentRoutes");
 const examRoutes = require("./routes/examRoutes");
+const configAdminJs = require("./configAdminJs")
 const app = express();
 
-AdminJS.registerAdapter(AdminJSMongoose);
-
-const isValidExamDate = function (initExam, newExam) {
-    if (Date.parse(newExam.startTime) < initExam.startTime.getTime()) {
-        if (Date.parse(newExam.endTime) > initExam.startTime.getTime()) {
-            return false;
-        } else {
-            return true;
-        }
-    } else if (Date.parse(newExam.startTime) > initExam.startTime.getTime()) {
-        if (Date.parse(newExam.startTime) < initExam.endTime.getTime()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-};
-
-// Very basic configuration of AdminJS.
-const adminJs = new AdminJS({
-    resources: [
-        {
-            resource: Admin,
-            features: [],
-            options: {
-                // or you can provide an object with your custom resource options
-                properties: {
-                    password: {
-                        isVisible: false,
-                    },
-                    _id: {
-                        isTitle: true,
-                    },
-                },
-                actions: {
-                    new: {
-                        isVisible: false,
-                    },
-                    delete: {
-                        isVisible: false,
-                    },
-                    edit: {
-                        isAccessible: (context) => {
-                            const { record, currentAdmin } = context;
-
-                            // We are only allowing to edit records created by currently logged in user
-                            return (
-                                record?.params?.createdByUserId ===
-                                currentAdmin.id
-                            );
-                        },
-                        isVisible: true,
-                    },
-                },
-            },
-        },
-        {
-            resource: Student,
-            options: {
-                properties: {
-                    password: {
-                        isVisible: {
-                            list: false,
-                            edit: true,
-                            filter: false,
-                            show: false,
-                        },
-                    },
-                    _id: {
-                        isTitle: true,
-                    },
-                    courses: {
-                        isVisible: false,
-                    },
-                },
-            },
-        },
-        {
-            resource: Course,
-        },
-        {
-            resource: Exam,
-            options: {
-                actions: {
-                    new: {
-                        before: async (request) => {
-                            const exams = await Exam.find();
-                            const newExam = request?.payload;
-                            if (exams) {
-                                for (let exam of exams) {
-                                    if (isValidExamDate(exam, newExam)) {
-                                        return request;
-                                    } else {
-                                        console.log(
-                                            "OH Boy!!! Overlap Exam Time"
-                                        );
-                                        return;
-                                    }
-                                }
-                                return request;
-                            } else {
-                                return request;
-                            }
-                            // return request
-                        },
-                    },
-                },
-            },
-        },
-        {
-            resource: Record,
-        },
-    ],
-    databases: [], // We don’t have any resources connected yet.
-    // Path to the AdminJS dashboard.
-});
-
 const router = AdminJSExpress.buildAuthenticatedRouter(
-    adminJs,
+    configAdminJs,
     {
         cookieName: "adminjs",
         cookiePassword: "complicatedsecurepassword",
@@ -169,7 +48,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(
         saveUninitialized: true,
     }
 );
-app.use(adminJs.options.rootPath, router);
+app.use(configAdminJs.options.rootPath, router);
 
 const mongoDB =
     "mongodb+srv://minhhuy123:Tuilahuy123@cluster0.tpopnup.mongodb.net/onlineExamSystem?retryWrites=true&w=majority";

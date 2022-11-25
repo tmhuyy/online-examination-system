@@ -210,7 +210,7 @@ const newExam = async () => {
     });
     await exam.save();
 };
-
+// http://localhost:5050/admin/resources/Exam/records/6380ff09c1a78e8aebf0f4da/show
 // const testValidate = async () => {
 //     const exams = await Exam.find();
 //     for (let exam of exams) {
