@@ -12,11 +12,8 @@ module.exports.renderExamSchedule = async (req, res) => {
 module.exports.renderExamScore = async (req, res) => {
     const exams = await Exam.find();
     const record = await Record.find().populate({ path: "courseID" });
-    const student = req.student;
-    const recordOfStudent = record.filter(el => el.studentID.toString() === student.toString())
-    const examsOfStudent = exams.filter((el) => el.students.includes(student));
-    // console.log(recordOfStudent)
-    // console.log(examsOfStudent.includes)
-    // res.send(recordOfStudent)
+    const studentID = req.session?.student?._id;
+    const recordOfStudent = record.filter(el => el.studentID.toString() === studentID.toString())
+    const examsOfStudent = exams.filter((el) => el.students.includes(studentID));
     res.render("exams/score", {recordOfStudent});
 };

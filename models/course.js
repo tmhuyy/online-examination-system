@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Exam = require("./exam");
+const Student = require("./student");
 const CourseSchema = new Schema({
     // _id: {
     //     type: String
@@ -8,32 +9,38 @@ const CourseSchema = new Schema({
     subjectID: {
         type: String,
         unique: true,
-        required: true
+        required: true,
     },
     name: {
         type: String,
         unique: true,
-        required: true
+        required: true,
     },
     credit: {
         type: Number,
-        min: 1
+        min: 1,
     },
     students: [
         {
             type: Schema.Types.ObjectId,
             ref: "Student",
-            required: true
+            required: true,
         },
     ],
 });
 
+// CourseSchema.pre("deleteOne", { document: true, query: false }, function (next) {
+//     console.log("delete");
+//     return next()
+// })
+
 CourseSchema.post("save", async function (course, next) {
     const exam = new Exam({
         course: course._id,
-        students: course.students
+        students: course.students,
     });
     await exam.save();
+    next();
 });
 
 const Course = mongoose.model("Course", CourseSchema);
