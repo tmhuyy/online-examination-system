@@ -8,8 +8,6 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
-const passport = require("passport");
-const localStrategy = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const engine = require("ejs-mate");
 const path = require("path");
@@ -18,7 +16,6 @@ const bodyParser = require("body-parser");
 const AdminJS = require("adminjs");
 const AdminJSExpress = require("@adminjs/express");
 
-// const Student = require("./models/student");
 const AppError = require("./utils/AppError");
 const Admin = require("./models/admin");
 
@@ -95,13 +92,6 @@ const configSession = {
 app.use(session(configSession));
 app.use(flash());
 
-// comment to change the way to register and login student
-// app.use(passport.initialize());
-// app.use(passport.session());
-// passport.use(new localStrategy(Student.authenticate()));
-// passport.serializeUser(Student.serializeUser());
-// passport.deserializeUser(Student.deserializeUser());
-
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
@@ -116,9 +106,6 @@ app.get("/blogs", (req, res) => {
     res.render("blogs/blog-list-3");
 });
 
-// app.get("/admin", (req, res) => {
-//   res.render("admin/index")
-// })
 
 app.get("/", (req, res) => {
     res.render("index");
