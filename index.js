@@ -86,6 +86,9 @@ const adminJs = new AdminJS({
                     _id: {
                         isTitle: true,
                     },
+                    courses: {
+                        isVisible: false
+                    }
                 }
             }
         },

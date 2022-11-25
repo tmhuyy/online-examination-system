@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const StudentSchema = new Schema({
     username: {
         type: String,
+        unique: true,
         required: true,
     },
     password: {

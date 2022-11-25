@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const Exam = require("./exam");
 const CourseSchema = new Schema({
     // _id: {
     //     type: String
@@ -29,9 +29,11 @@ const CourseSchema = new Schema({
 });
 
 CourseSchema.post("save", async function (course, next) {
-    console.log(course._id);
-    // next();
-    // console.log("LUu");
+    const exam = new Exam({
+        course: course._id,
+        students: course.students
+    });
+    await exam.save();
 });
 
 const Course = mongoose.model("Course", CourseSchema);
