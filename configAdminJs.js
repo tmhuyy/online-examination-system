@@ -9,21 +9,42 @@ const Record = require("./models/record");
 
 const { ValidationError } = require("adminjs");
 
-const isValidExamDate = function (initExam, newExam) {
-    if (Date.parse(newExam.startTime) < initExam.startTime.getTime()) {
-        if (Date.parse(newExam.endTime) > initExam.startTime.getTime()) {
+const isValid = function (initExam, newExam) {
+    if (initExam.room === newExam.room) {
+        if (
+            (initExam.startTime.getTime() >= Date.parse(newExam.startTime) &&
+                initExam.startTime.getTime() <= Date.parse(newExam.endTime)) ||
+            (initExam.endTime.getTime() >= Date.parse(newExam.startTime) &&
+                initExam.endTime.getTime() <= Date.parse(newExam.endTime)) ||
+            (Date.parse(newExam.startTime) >= initExam.startTime.getTime() &&
+                Date.parse(newExam.startTime) <= initExam.endTime.getTime()) ||
+            (Date.parse(newExam.endTime) >= initExam.startTime.getTime() &&
+                Date.parse(newExam.endTime) <= initExam.endTime.getTime())
+        ) {
             return false;
         } else {
             return true;
         }
-    } else if (Date.parse(newExam.startTime) > initExam.startTime.getTime()) {
-        if (Date.parse(newExam.startTime) < initExam.endTime.getTime()) {
-            return false;
-        } else {
-            return true;
-        }
+    } else {
+        return true;
     }
 };
+
+// const isValidExamDate = function (initExam, newExam) {
+//     if (Date.parse(newExam.startTime) < initExam.startTime.getTime()) {
+//         if (Date.parse(newExam.endTime) > initExam.startTime.getTime()) {
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     } else if (Date.parse(newExam.startTime) > initExam.startTime.getTime()) {
+//         if (Date.parse(newExam.startTime) < initExam.endTime.getTime()) {
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     }
+// };
 AdminJS.registerAdapter(AdminJSMongoose);
 
 const adminJs = new AdminJS({
@@ -92,7 +113,9 @@ const adminJs = new AdminJS({
                         after: async (response) => {
                             const deletedCourse = response?.record?.params?._id;
                             await Exam.deleteMany({ course: deletedCourse });
-                            await Record.deleteMany({courseID: deletedCourse})
+                            await Record.deleteMany({
+                                courseID: deletedCourse,
+                            });
                             return response;
                         },
                     },
@@ -109,7 +132,7 @@ const adminJs = new AdminJS({
                             const newExam = request?.payload;
                             if (exams) {
                                 for (let exam of exams) {
-                                    if (isValidExamDate(exam, newExam)) {
+                                    if (isValid(exam, newExam)) {
                                         return request;
                                     } else {
                                         throw new ValidationError(

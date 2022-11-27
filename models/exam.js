@@ -13,8 +13,7 @@ const ExamSchema = new Schema({
     },
     room: {
         type: String,
-        unique: true,
-        // required: true
+        uppercase: true
     },
     startTime: {
         type: Date,

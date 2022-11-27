@@ -122,6 +122,6 @@ app.use((err, req, res, next) => {
     res.render("error", { status, message, name });
 });
 
-app.listen("5050", () => {
+app.listen("8080", () => {
     console.log("SERVER IS RUNNING");
 });
