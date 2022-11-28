@@ -7,7 +7,6 @@
 - Login to admin page:
     - email: admin123@gmail.com
     - password: admin123
-
 - CRUD students, records, exams, courses.
 - Validate the exam schedule by check 
 ## Endpoints

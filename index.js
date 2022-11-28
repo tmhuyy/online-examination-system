@@ -8,7 +8,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
-const mongoSanitize = require("express-mongo-sanitize");
+// const mongoSanitize = require("express-mongo-sanitize");
 const engine = require("ejs-mate");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -18,6 +18,7 @@ const AdminJSExpress = require("@adminjs/express");
 const AppError = require("./utils/AppError");
 // model
 const Admin = require("./models/admin");
+const Announcement = require("./models/announcement")
 // routes
 const studentRoutes = require("./routes/studentRoutes");
 const examRoutes = require("./routes/examRoutes");
@@ -85,7 +86,7 @@ app.engine("ejs", engine);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.use(mongoSanitize());
+// app.use(mongoSanitize());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -101,16 +102,12 @@ app.use((req, res, next) => {
     res.locals.student = req.session.student;
     next();
 });
-
 app.use("/", studentRoutes);
 app.use("/", examRoutes);
 
-app.get("/blogs", (req, res) => {
-    res.render("blogs/blog-list-3");
-});
-
-app.get("/", (req, res) => {
-    res.render("index");
+app.get("/", async (req, res) => {
+    const announcements = await Announcement.find({});
+    res.render("index", {announcements});
 });
 
 // TODO ERROR ROUTES
