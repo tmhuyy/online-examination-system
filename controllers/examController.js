@@ -1,6 +1,5 @@
 const Exam = require("../models/exam");
 const Record = require("../models/record");
-const Student = require("../models/student");
 
 module.exports.renderExamSchedule = async (req, res) => {
     const exams = await Exam.find().populate({ path: "course" });
@@ -12,11 +11,7 @@ module.exports.renderExamSchedule = async (req, res) => {
 module.exports.renderExamScore = async (req, res) => {
     const exams = await Exam.find();
     const record = await Record.find().populate({ path: "courseID" });
-    const student = req.student;
-    const recordOfStudent = record.filter(el => el.studentID.toString() === student.toString())
-    const examsOfStudent = exams.filter((el) => el.students.includes(student));
-    // console.log(recordOfStudent)
-    // console.log(examsOfStudent.includes)
-    // res.send(recordOfStudent)
+    const studentID = req.session?.student?._id;
+    const recordOfStudent = record.filter(el => el.studentID.toString() === studentID.toString())
     res.render("exams/score", {recordOfStudent});
 };

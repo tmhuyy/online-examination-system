@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
 const Schema = mongoose.Schema;
-const Course = require("./course");
 const bcrypt = require("bcrypt");
 
 const StudentSchema = new Schema({
@@ -24,12 +22,6 @@ const StudentSchema = new Schema({
         required: true,
         unique: true,
     },
-    // courses: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: "Course",
-    //     },
-    // ],
 });
 
 StudentSchema.statics.findAndValidate = async function (username, password) {
@@ -51,7 +43,6 @@ StudentSchema.pre("save", async function (next) {
 });
 
 // automatically add a username and password
-// StudentSchema.plugin(passportLocalMongoose);
 const Student = mongoose.model("Student", StudentSchema);
 
 module.exports = Student;

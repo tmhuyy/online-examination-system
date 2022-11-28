@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const Record = require("./record");
 const ExamSchema = new Schema({
     course: {
         type: Schema.Types.ObjectId,
@@ -13,8 +13,7 @@ const ExamSchema = new Schema({
     },
     room: {
         type: String,
-        unique: true,
-        // required: true
+        uppercase: true
     },
     startTime: {
         type: Date,
@@ -22,7 +21,6 @@ const ExamSchema = new Schema({
     },
     endTime: {
         type: Date,
-        unique: true,
     },
     students: [
         {
@@ -33,7 +31,16 @@ const ExamSchema = new Schema({
     ],
 });
 
-// ExamSchema.pre("save", async function (next) {});
+ExamSchema.post("save", async function (exam, next) {
+    for (let student of exam.students) {
+        const record = new Record({
+            courseID: exam.course,
+            studentID: student
+        });
+        await record.save()
+    }
+    next()
+});
 
 const Exam = mongoose.model("Exam", ExamSchema);
 

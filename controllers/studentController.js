@@ -16,9 +16,6 @@ module.exports.login = async (req, res) => {
         req.flash("error", "Password or Username is wrong");
         res.redirect("/login");
     }
-    // req.flash("success", "Welcome back to Eduboard");
-    // const redirectUrl = req.session.returnTo || "/";
-    // res.redirect(redirectUrl);
 };
 
 module.exports.logout = (req, res, next) => {
