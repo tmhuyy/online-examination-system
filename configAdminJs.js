@@ -9,7 +9,7 @@ const Record = require("./models/record");
 
 const { ValidationError } = require("adminjs");
 
-const isValid = function (initExam, newExam) {
+const isValidExamDate = function (initExam, newExam) {
     if (initExam.room === newExam.room) {
         if (
             (initExam.startTime.getTime() >= Date.parse(newExam.startTime) &&
@@ -30,7 +30,7 @@ const isValid = function (initExam, newExam) {
     }
 };
 
-// const isValidExamDate = function (initExam, newExam) {
+// const isValidExamDateExamDate = function (initExam, newExam) {
 //     if (Date.parse(newExam.startTime) < initExam.startTime.getTime()) {
 //         if (Date.parse(newExam.endTime) > initExam.startTime.getTime()) {
 //             return false;
@@ -132,7 +132,7 @@ const adminJs = new AdminJS({
                             const newExam = request?.payload;
                             if (exams) {
                                 for (let exam of exams) {
-                                    if (isValid(exam, newExam)) {
+                                    if (isValidExamDate(exam, newExam)) {
                                         return request;
                                     } else {
                                         throw new ValidationError(

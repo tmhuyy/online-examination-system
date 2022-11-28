@@ -12,16 +12,17 @@ const mongoSanitize = require("express-mongo-sanitize");
 const engine = require("ejs-mate");
 const path = require("path");
 const bodyParser = require("body-parser");
-
-const AdminJS = require("adminjs");
 const AdminJSExpress = require("@adminjs/express");
 
+// utility
 const AppError = require("./utils/AppError");
+// model
 const Admin = require("./models/admin");
-
+// routes
 const studentRoutes = require("./routes/studentRoutes");
 const examRoutes = require("./routes/examRoutes");
-const configAdminJs = require("./configAdminJs")
+// config adminjs panel
+const configAdminJs = require("./configAdminJs");
 const app = express();
 
 const router = AdminJSExpress.buildAuthenticatedRouter(
@@ -59,17 +60,7 @@ mongoose
     .then(() => console.log("CONNECTION MONGODB"))
     .catch((err) => console.log(err));
 
-app.engine("ejs", engine);
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-
-app.use(mongoSanitize());
-app.use(bodyParser.json());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
-app.use(express.static(path.join(__dirname, "public")));
-
+// work with storing session
 const store = MongoStore.create({
     mongoUrl: mongoDB,
     secret: process.env.SESSION_SECRET,
@@ -89,6 +80,18 @@ const configSession = {
     store,
 };
 
+// config app expressjs
+app.engine("ejs", engine);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(mongoSanitize());
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(session(configSession));
 app.use(flash());
 
@@ -105,7 +108,6 @@ app.use("/", examRoutes);
 app.get("/blogs", (req, res) => {
     res.render("blogs/blog-list-3");
 });
-
 
 app.get("/", (req, res) => {
     res.render("index");

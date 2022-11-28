@@ -29,10 +29,6 @@ const CourseSchema = new Schema({
     ],
 });
 
-// CourseSchema.pre("deleteOne", { document: true, query: false }, function (next) {
-//     console.log("delete");
-//     return next()
-// })
 
 CourseSchema.post("save", async function (course, next) {
     const exam = new Exam({
