@@ -3,7 +3,6 @@
 - Install Node.js.
 - Clone repository.
 - Run <code>npm install</code> to install
----
 ## Documentation
 - Login to admin page:
     - email: admin123@gmail.com
@@ -11,7 +10,6 @@
 
 - CRUD students, records, exams, courses.
 - Validate the exam schedule by check 
----
 ## Endpoints
 > Students end  point :
 >  - <code>GET</code> **/examSchedule** - LIST all examination schedule.
@@ -23,8 +21,6 @@
 >  Admin end point: 
 >    - <code>GET</code> **/admin/login** - RENDER a login page for admin
 >    - <code>GET</code> **/courses/:id** - GET a course by ID
-
----
 ## Screenshots 
 ### Admin Page
 |<img src="public/img/screenshot/admin/adminLogin.png" alt="Admin login" width="400"/> |
@@ -59,7 +55,6 @@
 |<img src="public/img/screenshot/student/examSchedule.png" alt="Exam schedule" width="400"/> |
 |:---:|
 | **Exam schedule**|
----
 
 ## Tech stacks
 ### Front-end
@@ -68,7 +63,6 @@
 - Node.js (Express) 
 - MongoDB (Mongoose)
 
----
 ## Contributing
 Huynh Van Vinh - ITITIU19248
 <br>
