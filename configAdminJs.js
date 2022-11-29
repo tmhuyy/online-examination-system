@@ -6,6 +6,7 @@ const Admin = require("./models/admin");
 const Exam = require("./models/exam");
 const Course = require("./models/course");
 const Record = require("./models/record");
+const Announcement = require("./models/announcement");
 
 const { ValidationError } = require("adminjs");
 
@@ -160,6 +161,19 @@ const adminJs = new AdminJS({
         {
             resource: Record,
         },
+        {
+            resource: Announcement,
+            options: {
+                properties: {
+                    _id: {
+                        isTitle: true
+                    },
+                    content: {
+                        type: "text",
+                    }
+                }
+            }
+        }
     ],
     databases: [], // We don’t have any resources connected yet.
     // Path to the AdminJS dashboard.
