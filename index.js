@@ -49,8 +49,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(
 );
 app.use(configAdminJs.options.rootPath, router);
 
-const mongoDB =
-    "mongodb+srv://minhhuy123:Tuilahuy123@cluster0.tpopnup.mongodb.net/onlineExamSystem?retryWrites=true&w=majority";
+const mongoDB = process.env.DB_URL;
 mongoose
     .connect(mongoDB, {
         useUnifiedTopology: true,
@@ -121,6 +120,6 @@ app.use((err, req, res, next) => {
     res.render("error", { status, message, name });
 });
 
-app.listen("8080", () => {
+app.listen(process.env.PORT||"8080", () => {
     console.log("SERVER IS RUNNING");
 });
