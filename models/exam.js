@@ -11,13 +11,8 @@ const ExamSchema = new Schema({
         type: Number,
         enum: [1, 2],
     },
-    room: {
-        type: String,
-        uppercase: true
-    },
     startTime: {
         type: Date,
-        unique: true,
     },
     endTime: {
         type: Date,
@@ -29,6 +24,9 @@ const ExamSchema = new Schema({
             required: true,
         },
     ],
+    room: {
+        type: String
+    }
 });
 
 ExamSchema.post("save", async function (exam, next) {

@@ -2,13 +2,11 @@ const mongoose = require("mongoose");
 const Student = require("../models/student");
 const Exam = require("../models/exam");
 const Course = require("../models/course");
-const Teacher = require("../models/teacher");
 const Record = require("../models/record");
 const Admin = require("../models/admin");
 
 const studentDetail = require("./studentDetail");
 const examDetail = require("./examDetail");
-const teacherDetail = require("./teacherDetail");
 const courseDetail = require("./courseDetail");
 const recordDetail = require("./recordDetail");
 
@@ -201,12 +199,12 @@ const exam = {
 
 const newExam = async () => {
     const exam = new Exam({
-        course: "6380cc4dbafbc7e424b382b9",
-        startTime: new Date("2022-11-25 03:30:00"),
-        endTime: new Date("2022-11-25 05:00:00"),
+        course: "638ca30c897712bdf48d9da0",
+        // startTime: new Date("2022-11-25 03:30:00"),
+        // endTime: new Date("2022-11-25 05:00:00"),
         semester: 1,
-        room: "A2.008",
-        students: ["6380cadbbafbc7e424b38234"],
+        room: "A1.111",
+        students: ["6382d612093253be55d5d786"],
     });
     await exam.save();
 };

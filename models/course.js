@@ -8,7 +8,6 @@ const CourseSchema = new Schema({
     // },
     subjectID: {
         type: String,
-        unique: true,
         required: true,
     },
     name: {
