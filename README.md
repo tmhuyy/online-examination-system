@@ -8,7 +8,7 @@
     - email: admin123@gmail.com
     - password: admin123
 - CRUD students, records, exams, courses.
-- Validate the exam schedule by check 
+
 ## Endpoints
 > Students end  point :
 >  - <code>GET</code> **/examSchedule** - LIST all examination schedule.
