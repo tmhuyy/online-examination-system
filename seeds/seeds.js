@@ -43,50 +43,50 @@ const seedCourse = async function () {
     const studentList = await Student.find();
     await Course.deleteMany();
 
-    for (let i = 0; i <= courseDetail.length - 1; i++) {
-        let students = [];
-        const _id = courseDetail[i]._id;
-        const name = courseDetail[i].name;
-        const credit = courseDetail[i].credit;
-        for (let j = 0; j <= studentList.length - 1; j++) {
-            if (studentList[j].courses.includes(_id)) {
-                console.log("hello");
-                students.push(studentList[j]._id);
-            } else {
-                console.log("hi");
-            }
-        }
+    // for (let i = 0; i <= courseDetail.length - 1; i++) {
+    //     let students = [];
+    //     const _id = courseDetail[i]._id;
+    //     const name = courseDetail[i].name;
+    //     const credit = courseDetail[i].credit;
+    //     for (let j = 0; j <= studentList.length - 1; j++) {
+    //         if (studentList[j].courses.includes(_id)) {
+    //             console.log("hello");
+    //             students.push(studentList[j]._id);
+    //         } else {
+    //             console.log("hi");
+    //         }
+    //     }
 
-        const course = new Course({
-            name,
-            _id,
-            credit,
-            students,
-        });
-        await course.save();
-    }
+    //     const course = new Course({
+    //         name,
+    //         _id,
+    //         credit,
+    //         students,
+    //     });
+    //     await course.save();
+    // }
 };
 
 const seedExam = async function () {
     const courseList = await Course.find();
     await Exam.deleteMany();
-    for (let i = 0; i <= examDetail.length - 1; i++) {
-        const endTime = examDetail[i].endTime;
-        const startTime = examDetail[i].startTime;
-        const room = examDetail[i].room;
-        const course = examDetail[i].course;
-        const students = courseList.filter((e) => e._id === course)[0].students;
-        // const score = Math.floor(Math.random() * 101);
-        const exam = new Exam({
-            startTime,
-            endTime,
-            room,
-            course,
-            students,
-            // score
-        });
-        await exam.save();
-    }
+    // for (let i = 0; i <= examDetail.length - 1; i++) {
+    //     const endTime = examDetail[i].endTime;
+    //     const startTime = examDetail[i].startTime;
+    //     const room = examDetail[i].room;
+    //     const course = examDetail[i].course;
+    //     const students = courseList.filter((e) => e._id === course)[0].students;
+    //     // const score = Math.floor(Math.random() * 101);
+    //     const exam = new Exam({
+    //         startTime,
+    //         endTime,
+    //         room,
+    //         course,
+    //         students,
+    //         // score
+    //     });
+    //     await exam.save();
+    // }
     // const exams = await Exam.find();
     // const exam = exams[0].startTime.getTime();
     // const test = new Date("2022-10-18 08:30:00").getTime();
@@ -222,6 +222,6 @@ const newExam = async () => {
 // console.log(random2);
 
 
-newExam().then(() => {
+seedExam().then(() => {
     mongoose.connection.close();
 });

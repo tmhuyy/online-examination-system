@@ -40,8 +40,13 @@
                                     <a href="#">
                                       <h4 class="testimonials__title text-center"><%= announcement.title%></h4>
                                     </a>
+                                   
                                     <p class="testimonials__text">
                                         <%=announcement.content%>
+                                    </p>
+                                    <hr></hr>
+                                    <p class="testimonials__text text-center">
+                                        <%=announcement.createdAt.toDateString()%>
                                     </p>
     
                                     

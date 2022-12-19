@@ -8,6 +8,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
+const moment = require("moment")
 // const mongoSanitize = require("express-mongo-sanitize");
 const engine = require("ejs-mate");
 const path = require("path");

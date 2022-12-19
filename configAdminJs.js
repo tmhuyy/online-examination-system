@@ -155,6 +155,36 @@ const adminJs = new AdminJS({
                             // return request
                         },
                     },
+                    edit: {
+                        before: async (request) => {
+                            const exams = await Exam.find().populate({
+                                path: "course",
+                            });
+                            const newExam = request?.payload;
+                            if (exams) {
+                                for (let exam of exams) {
+                                    if (isValidExamDate(exam, newExam)) {
+                                        return request;
+                                    } else {
+                                        throw new ValidationError(
+                                            {
+                                                name: {
+                                                    message:
+                                                        "OH Boy!!! Overlap Exam Time",
+                                                },
+                                            },
+                                            {
+                                                message: `OH Boy!!! Overlap exam time with examID: ${exam._id} - (course: ${exam.course.name}). Please check again`,
+                                            }
+                                        );
+                                    }
+                                }
+                            } else {
+                                return request;
+                            }
+                            // return request
+                        },
+                    },
                 },
             },
         },
@@ -166,14 +196,17 @@ const adminJs = new AdminJS({
             options: {
                 properties: {
                     _id: {
-                        isTitle: true
+                        isTitle: true,
                     },
                     content: {
-                        type: "text",
-                    }
-                }
-            }
-        }
+                        type: "textarea",
+                        props: {
+                            rows: 30,
+                        },
+                    },
+                },
+            },
+        },
     ],
     databases: [], // We don’t have any resources connected yet.
     // Path to the AdminJS dashboard.
